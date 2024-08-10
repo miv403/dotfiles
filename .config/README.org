@@ -1,0 +1,6 @@
+#+title: dotfiles
+#+description: miv403's configuration files
+#+author: miv403
+
+* yes
+
