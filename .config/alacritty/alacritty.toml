@@ -1,0 +1,56 @@
+[bell]
+animation = "EaseOutSine"
+color = "#ffffff"
+command = "pwd"
+
+[colors.cursor]
+cursor = "#ddbb88"
+text = "CellBackground"
+
+[colors.line_indicator]
+background = "#001b0c"
+foreground = "None"
+
+[colors.normal]
+black = "#1d1f21"
+blue = "#1d4f75"
+cyan = "#1181c9"
+green = "#358245"
+magenta = "#bf6aa7"
+red = "#cc6666"
+white = "#c5c8c6"
+yellow = "#f0c674"
+
+[colors.primary]
+background = "#032b13"
+foreground = "#ffffff"
+
+[cursor.style]
+blinking = "On"
+shape = "Block"
+
+[font]
+builtin_box_drawing = true
+size = 12.0
+
+[font.bold]
+family = "VictorMono NF"
+style = "Bold"
+
+[font.bold_italic]
+family = "VictorMono NF"
+style = "Bold Italic"
+
+[font.italic]
+family = "VictorMono NF"
+style = "Italic"
+
+[font.normal]
+# Default = ["VictorMono NF"]
+family = "monospace"
+style = "Regular"
+
+[window]
+dynamic_title = true
+opacity = 0.95
+title = "miv403@mivpc"
