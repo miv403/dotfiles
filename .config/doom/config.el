@@ -38,8 +38,8 @@
 ;;(setq doom-theme 'doom-tokyo-night)
 ;;(setq doom-theme 'doom-pine)
 ;;(setq doom-theme 'doom-monokai-classic)
-(setq doom-theme 'doom-monokai-machine)
-
+;;(setq doom-theme 'doom-monokai-machine)
+(setq doom-theme 'doom-gruvbox)
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
