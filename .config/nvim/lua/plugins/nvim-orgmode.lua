@@ -7,7 +7,7 @@ return {
     require('orgmode').setup({
       org_agenda_files = '~/andaç/**/*',
       org_default_notes_file = '~/andaç/andaç.org',
-      org_todo_keywords = {'TODO(t)', '|', 'DONE(d)'},
+      org_todo_keywords = { 'TODO(t)', 'NEXT(n)', 'HOLD(h)', '|', 'DONE(d)', 'KILL(k)' },
   
     -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option
     -- add ~org~ to ignore_install
