@@ -20,7 +20,7 @@ return {
   opts = {
     workspaces = {
       {
-        name = "personal",
+        name = "notlar",
         path = "~/notlar",
       },
       {
