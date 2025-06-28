@@ -21,7 +21,7 @@ gaps outer 3
 # resolution
 
 # exec --no-startup xrandr --output VGA1 --mode 1920x1080
-exec --no-startup xrandr --output LVDS1 --mode 1024x600 
+exec --no-startup xrandr --output LVDS1 --mode 1024x600
 
 # wallpaper
 exec --no-startup-id feh --bg-scale /home/mivlab/Pictures/wallpaper.jpg
@@ -61,8 +61,11 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # brightness
 
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+# bindsym XF86MonBrightnessUp exec xbacklight -inc 20
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+
+# bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 3%-
+# bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 3%+
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -84,6 +87,7 @@ bindsym $mod+Print exec --no-startup-id "~/.config/i3/screenshot.sh"
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
+
 bindsym $mod+d exec --no-startup-id "rofi -show drun"
 
 # A more modern dmenu replacement is rofi:
