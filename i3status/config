@@ -21,7 +21,7 @@ order += "memory"
 order += "tztime local"
 
 wireless _first_ {
-        format_up = " (%quality at %essid) %ip"
+        format_up = " %quality @ %essid %ip"
         format_down = " down"
 }
 
@@ -31,7 +31,13 @@ wireless _first_ {
 # }
 
 battery all {
-        format = "  %status %percentage %remaining"
+        format = "%status %percentage %remaining %emptytime"
+        format_down = "󱟨"
+        status_unk = "󰂑"
+        status_chr = "󱐋"
+        status_bat = "󰂀"
+        status_full = "󰁹"
+        low_threshold = 10
 }
 
 disk "/" {
@@ -44,10 +50,12 @@ load {
 
 memory {
         format = "󰍛  %used / %available"
-        threshold_degraded = "1G"
-        format_degraded = "󰍛 < %available"
+        # threshold_degraded = "1G"
+        threshold_degraded = "%25"
+        format_degraded = "󰍛 %available"
 }
 
 tztime local {
         format = "󰃭 %Y-%m-%d %H:%M:%S"
 }
+
