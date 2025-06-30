@@ -17,6 +17,7 @@ order += "wireless _first_"
 order += "battery all"
 order += "disk /"
 order += "load"
+order += "cpu_temperature 0"
 order += "memory"
 order += "tztime local"
 
@@ -47,6 +48,11 @@ disk "/" {
 load {
         format = "󰻠 %1min"
 }
+
+cpu_temperature 0 {
+    format = " %degrees °C"
+    path = "/sys/class/thermal/thermal_zone0/temp"
+  }
 
 memory {
         format = "󰍛  %used / %available"
