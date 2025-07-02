@@ -74,6 +74,10 @@
             "type": "localip",
             "format": "{ipv4} ({ifname})"
         },
+      	{
+                  "type": "battery",
+                  "key": "│ {#36} battery {#keys}│"
+      	},
         {
             "key": "├───────────┤",
             "type": "custom"
