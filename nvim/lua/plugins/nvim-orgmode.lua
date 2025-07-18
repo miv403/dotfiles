@@ -1,20 +1,19 @@
 return {
-  'nvim-orgmode/orgmode',
-  event = 'VeryLazy',
-  ft = { 'org' },
+  "nvim-orgmode/orgmode",
+  event = "VeryLazy",
+  ft = { "org" },
   config = function()
     -- Setup orgmode
-    require('orgmode').setup({
-      org_agenda_files = '~/andaç/**/*',
-      org_default_notes_file = '~/andaç/andaç.org',
-      org_todo_keywords = { 'TODO(t)', 'NEXT(n)', 'HOLD(h)', '|', 'DONE(d)', 'KILL(k)' },
-  
-    -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option
-    -- add ~org~ to ignore_install
-    -- require('nvim-treesitter.configs').setup({
-    --   ensure_installed = 'all',
-   --    ignore_install = { 'org' },
-   })
-  
+    require("orgmode").setup({
+      org_agenda_files = "~/andaç/**/*",
+      org_default_notes_file = "~/andaç/andaç.org",
+      org_todo_keywords = { "TODO(t)", "NEXT(n)", "HOLD(h)", "|", "DONE(d)", "KILL(k)" },
+
+      -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option
+      -- add ~org~ to ignore_install
+      -- require('nvim-treesitter.configs').setup({
+      --   ensure_installed = 'all',
+      --    ignore_install = { 'org' },
+    })
   end,
 }
