@@ -85,7 +85,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -116,14 +116,26 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
+# oh-my-posh setting
 
 eval "$($HOME/.local/bin/oh-my-posh --init --shell bash --config ~/.poshthemes/onehalf.minimal.omp.json)"        
+# add .local/bin to path
 
 export PATH=$HOME/.local/bin:$PATH
 
 # doom emacs bin path
 export PATH=$HOME/.config/emacs/bin:$PATH
 
+# supergfxctl alias
 
-alias desit-venv='source $HOME/proje/bin/activate'
+alias Integrated="supergfxctl -m Integrated"
+alias Hybrid="supergfxctl -m Hybrid"
+alias AsusMuxDgpu="supergfxctl -m AsusMuxDgpu"
+alias super="supergfxctl"
+alias superg="supergfxctl -g"
+
+# asusctl profile alias
+
+alias profile="asusctl profile -p"
+alias set-profile="asusctl profile -P"
+alias list-profile="asusctl profile -l"
