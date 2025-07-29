@@ -137,5 +137,7 @@ alias superg="supergfxctl -g"
 # asusctl profile alias
 
 alias profile="asusctl profile -p"
-alias set-profile="asusctl profile -P"
 alias list-profile="asusctl profile -l"
+alias Quiet="asusctl profile -P Quiet"
+alias Balanced="asusctl profile -P Balanced"
+alias Performance="asusctl profile -P Performance"
