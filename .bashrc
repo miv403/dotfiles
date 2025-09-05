@@ -28,8 +28,10 @@ unset rc
 
 eval "$($HOME/.local/bin/oh-my-posh --init --shell bash --config ~/.poshthemes/onehalf.minimal.omp.json)"        
 
+# add .local/bin to path
 export PATH=$HOME/.local/bin:$PATH
 
+# $EDITOR=vim
 export EDITOR=/usr/bin/vim
 
 # doom emacs bin path
@@ -37,9 +39,6 @@ export PATH=$HOME/.config/emacs/bin:$PATH
 
 # .cargo bin path
 export PATH=$HOME/.cargo/bin:$PATH
-
-# alias stajnvim="cd $HOME/programming/staj/esp32-mpu9520/ && nvim ."
-alias staj="cd $HOME/programming/staj/"
 
 # open org-agenda with neovim
 alias andaç="nvim $HOME/andaç"
@@ -56,6 +55,8 @@ alias superg="supergfxctl -g"
 
 alias profile="asusctl profile -p"
 alias list-profile="asusctl profile -l"
+
 alias Quiet="asusctl profile -P Quiet"
 alias Balanced="asusctl profile -P Balanced"
 alias Performance="asusctl profile -P Performance"
+
