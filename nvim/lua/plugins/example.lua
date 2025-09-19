@@ -16,7 +16,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "minicyan",
+      colorscheme = "gruvbox",
     },
   },
 
@@ -28,7 +28,7 @@ return {
   },
 
   -- disable trouble
-  { "folke/trouble.nvim",      enabled = false },
+  { "folke/trouble.nvim", enabled = false },
 
   -- override nvim-cmp and add cmp-emoji
   {
@@ -181,7 +181,7 @@ return {
 
   -- add any tools you want to have installed below
   {
-   "williamboman/mason.nvim",
+    "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
         "stylua",
