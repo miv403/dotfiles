@@ -1,6 +1,7 @@
 [user]
 	email = miv403@duck.com
 	name = miv403
+	signingkey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMYVDoBMXl0SqLvGAIxpCuu1QvAerYZGp1QrhR5eze6g miv403@duck.com
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
@@ -13,3 +14,9 @@
 	defaultBranch = master
 [help]
 	autocorrect = 10
+[core]
+	editor = vim
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh
