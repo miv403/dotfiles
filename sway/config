@@ -90,6 +90,15 @@ input "type:keyboard" {
 #       middle_emulation enabled
 #   }
 #
+
+# 10248:260:ASUF1204:00_2808:0104_Touchpad Touchpad
+
+input "10248:260:ASUF1204:00_2808:0104_Touchpad" {
+    dwt enabled
+    tap enabled
+    middle_emulation enabled
+}
+
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
