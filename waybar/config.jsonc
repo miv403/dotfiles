@@ -1,4 +1,5 @@
 // -*- mode: jsonc -*-
+// https://github.com/OriginCode/dotfiles
 {
     "layer": "top",
     "position": "top",
