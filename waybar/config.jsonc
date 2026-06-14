@@ -1,74 +1,110 @@
+// -*- mode: jsonc -*-
 {
     "layer": "top",
     "position": "top",
-    "height": 35,
+    "height": 30,
     "spacing": 4,
-    "modules-left": ["niri/workspaces", "niri/window"],
-    "modules-center": ["clock"],
-    "modules-right": ["cpu", "memory", "temperature", "backlight", "pulseaudio", "network", "battery", "tray"],
-    
+    "modules-left": [
+        "niri/workspaces",
+        // "cava",
+        "mpris"
+    ],
+    "modules-center": [
+        "niri/window"
+    ],
+    "modules-right": [
+        // "idle_inhibitor",
+        // "load",
+        "cpu",
+        "memory",
+        "temperature",
+        "wireplumber",
+        "backlight",
+        "network",
+        "battery",
+        "clock",
+        "tray"
+    ],
     "niri/workspaces": {
-        "format": "{index}"
+        "format": "{icon}",
+        "format-icons": {
+            "default": "",
+            "active": ""
+        }
     },
-    
     "niri/window": {
         "format": "{}",
         "max-length": 50
     },
-    
+    "cava": {
+        "framerate": 30,
+        "autosens": 1,
+        "bars": 14,
+        "lower_cutoff_freq": 50,
+        "higher_cutoff_freq": 10000,
+        "method": "pipewire",
+        "source": "auto",
+        "stereo": true,
+        "bar_delimiter": 0,
+        "noise_reduction": 0.77,
+        "input_delay": 2,
+        "hide_on_silence": true,
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+        "actions": {
+            "on-click-right": "mode"
+        }
+    },
+    "mpris": {
+        "format": " {status_icon} {dynamic}",
+        "interval": 1,
+        "dynamic-len": 40,
+        "status-icons": {
+            "playing": "▶",
+            "paused": "⏸",
+            "stopped": ""
+        },
+        "dynamic-order": ["title", "artist"],
+        "ignored-players": ["firefox"]
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "load": {
+        "format": " {}"
+    },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}",
         "format": "{:%Y-%m-%d %H:%M}"
     },
-    
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false
     },
-    
     "memory": {
         "format": "{}% "
     },
-    
     "temperature": {
         "critical-threshold": 80,
         "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", ""]
     },
-    
     "backlight": {
-        "format": "%{percent} {icon}",
+        "format": "{percent}% {icon}",
         "format-icons": ["󰃞", "󰃝", "󰃟", "󰃠"]
     },
-    
     "network": {
-        "format-wifi": " {signalStrength}%",
-        "format-ethernet": " connected",
+        "format-wifi": " {signalStrength}% ",
+        "format-ethernet": " {ipaddr}/{cidr} {icon}",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "⚠ Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
-    
-    "pulseaudio": {
-        "format": "%{volume} {icon}",
-        "format-bluetooth": "%{volume} {icon}",
-        "format-bluetooth-muted": " {icon}",
-        "format-muted": " {format_source}",
-        "format-source": "%{volume} ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-    },
-    
     "battery": {
         "states": {
             "warning": 30,
@@ -81,8 +117,25 @@
         "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""]
     },
-    
+    "wireplumber": {
+        "scroll-step": 5,
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    },
     "tray": {
+        "icon-size": 14,
         "spacing": 10
     }
 }
