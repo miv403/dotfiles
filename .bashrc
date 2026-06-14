@@ -40,6 +40,12 @@ export PATH=$HOME/.config/emacs/bin:$PATH
 # .cargo bin path
 export PATH=$HOME/.cargo/bin:$PATH
 
+# go/bin bin path
+export PATH=$HOME/go/bin:$PATH
+
+# alias stajnvim="cd $HOME/programming/staj/esp32-mpu9520/ && nvim ."
+alias staj="cd $HOME/programming/staj/"
+
 # open org-agenda with neovim
 alias andaç="nvim $HOME/andaç"
 
@@ -53,10 +59,97 @@ alias superg="supergfxctl -g"
 
 # asusctl profile alias
 
-alias profile="asusctl profile -p"
-alias list-profile="asusctl profile -l"
+alias profile="asusctl profile get"
+alias list-profile="asusctl profile list"
 
-alias Quiet="asusctl profile -P Quiet"
-alias Balanced="asusctl profile -P Balanced"
-alias Performance="asusctl profile -P Performance"
+alias Quiet="asusctl profile set Quiet"
+alias Balanced="asusctl profile set Balanced"
+alias Performance="asusctl profile set Performance"
+alias oneshot="asusctl battery oneshot"
+alias batinfo="asusctl battery info"
 
+limit() {
+  asusctl battery limit $1
+}
+
+# bat aliases
+
+alias man="batman"
+# alias grep="batgrep"
+alias diff="batdiff --color"
+
+export PATH=$PATH:~/.spoofdpi/bin
+export PATH=${PATH}:/usr/local/cuda-13.1/bin
+
+# ysa() {
+#   cd "$HOME/workspace/ysa/$1"
+# }
+
+# git aliases
+
+commit() {
+  git commit "$1" "$2"
+}
+
+push() {
+  git push
+}
+
+add(){
+  git add $@
+}
+
+init() {
+  git init
+}
+
+fetch() {
+  git fetch
+}
+
+status() {
+  git status
+}
+
+checkout() {
+  git checkout "$1"
+}
+
+branch() {
+  git branch "$1"
+}
+
+wg-nl() {
+  sudo wg-quick up NL-FREE-216
+}
+wg-down() {
+ sudo wg-quick down NL-FREE-216
+}
+
+warp() {
+  warp-cli connect
+  sleep 0.2
+  curl https://www.cloudflare.com/cdn-cgi/trace/
+}
+warp-disconnect() {
+  warp-cli disconnect
+  sleep 0.2
+  curl https://www.cloudflare.com/cdn-cgi/trace/
+}
+
+obsidian() {
+    local host_sock="/run/user/$(id -u)/.obsidian-cli.sock"
+    local flatpak_sock="/run/user/$(id -u)/.flatpak/md.obsidian.Obsidian/xdg-run/.obsidian-cli.sock"
+
+    # Symlink the sandboxed socket to the host location if it exists
+    if [ -S "$flatpak_sock" ]; then
+        ln -sf "$flatpak_sock" "$host_sock"
+    fi
+
+    # Call the flatpak application directly, passing all arguments ($@)
+    flatpak run md.obsidian.Obsidian "$@"
+}
+
+# ssh agent socket
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+systemctl --user import-environment SSH_AUTH_SOCK
