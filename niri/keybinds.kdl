@@ -1,0 +1,6 @@
+// keybinds managed by niri-settings. Consider moving existing binds here.
+binds {
+    Super+Alt+Space { spawn-sh "playerctl play-pause" ; }
+    Super+Shift+S { screenshot; }
+    Super+T { spawn-sh "/home/miv/repos/selectra/selectra-wayland.py" ; }
+}

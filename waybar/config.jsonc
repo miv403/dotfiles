@@ -8,14 +8,16 @@
     "modules-left": [
         "niri/workspaces",
         // "cava",
-        "mpris"
+        "mpris",
+        "niri/window"
     ],
     "modules-center": [
-        "niri/window"
+        "clock"
     ],
     "modules-right": [
         // "idle_inhibitor",
         // "load",
+        "custom/clipboard",
         "cpu",
         "memory",
         "temperature",
@@ -23,7 +25,6 @@
         "backlight",
         "network",
         "battery",
-        "clock",
         "tray"
     ],
     "niri/workspaces": {
@@ -123,7 +124,7 @@
         "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon}",
         "format-bluetooth-muted": " {icon}",
-        "format-muted": "",
+        "format-muted": "",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -138,5 +139,11 @@
     "tray": {
         "icon-size": 14,
         "spacing": 10
+    },
+    "custom/clipboard": {
+        "format": " ",
+        "on-click": "cliphist list | fuzzel -d | cliphist decode | wl-copy",
+        "on-click-right": "cliphist wipe && notify-send 'Clipboard Cleared'",
+        "tooltip-format": "Left-click: Open History\nRight-click: Clear History"
     }
 }
