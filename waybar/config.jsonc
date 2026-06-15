@@ -79,9 +79,10 @@
         "format": " {}"
     },
     "clock": {
+        "interval": 1,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}",
-        "format": "{:%Y-%m-%d %H:%M}"
+        "format": "{:%Y-%m-%d %H:%M:%S}"
     },
     "cpu": {
         "format": "{usage}% ",
@@ -93,17 +94,17 @@
     "temperature": {
         "critical-threshold": 80,
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", ""]
     },
     "backlight": {
         "format": "{percent}% {icon}",
         "format-icons": ["󰃞", "󰃝", "󰃟", "󰃠"]
     },
     "network": {
-        "format-wifi": " {signalStrength}% ",
-        "format-ethernet": " {ipaddr}/{cidr} {icon}",
+        "format-wifi": " ⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes} {signalStrength}% ",
+        "format-ethernet": " ⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes} {ipaddr}/{cidr} 󰈀",
         "tooltip-format": "{ifname} via {gwaddr}",
-        "format-linked": "{ifname} (No IP)",
+        "format-linked": "{ifname} (No IP) 󰈀",
         "format-disconnected": "⚠ Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
@@ -141,7 +142,7 @@
         "spacing": 10
     },
     "custom/clipboard": {
-        "format": " ",
+        "format": "",
         "on-click": "cliphist list | fuzzel -d | cliphist decode | wl-copy",
         "on-click-right": "cliphist wipe && notify-send 'Clipboard Cleared'",
         "tooltip-format": "Left-click: Open History\nRight-click: Clear History"
