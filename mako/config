@@ -1,12 +1,12 @@
 # ~/.config/mako/config
 
-font=Sans 11
-background-color=#1e1e2e
-text-color=#cdd6f4
-border-color=#7fc8ff
+font=VictorMono NF 11
+background-color=#282828
+text-color=#ebdbb2
+border-color=#83a598
 border-size=2
 border-radius=8
-progress-color=source #313244
+progress-color=source #504945
 
 margin=20
 padding=15
@@ -16,6 +16,15 @@ height=120
 # Notification timeout (in milliseconds)
 default-timeout=5000
 
-[urgency=high]
-border-color=#f38ba8
+[urgency=low]
+border-color=#727272
 default-timeout=0
+
+[urgency=normal]
+border-color=#83a598
+default-timeout=0
+
+[urgency=high]
+border-color=#fb4934
+default-timeout=0
+
