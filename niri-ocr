@@ -1,0 +1,2 @@
+#!/bin/bash
+grim -g "$(slurp)" - | tesseract - - -l tur+eng | wl-copy

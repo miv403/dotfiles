@@ -377,11 +377,14 @@ binds {
 
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
-
+  
+    // ocr script
     Mod+Shift+T { spawn "~/.local/bin/niri-ocr"; }
-
+    
+    // clipboard
     Mod+Alt+V { spawn "sh" "-c" "cliphist list | fuzzel -d | cliphist decode | wl-copy"; }
-
+    
+    // calculator shortcut
     XF86Calculator { spawn "gnome-calculator";}
 
 
@@ -391,6 +394,7 @@ binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Super+Alt+L hotkey-overlay-title="Lock Screen" { spawn "hyprlock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -619,7 +623,7 @@ binds {
 
     // Move the focused window between the floating and the tiling layout.
     Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    
 
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
@@ -655,8 +659,6 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
-
-
 }
 
 include "basicsettings.kdl" // Added by niri-settings
