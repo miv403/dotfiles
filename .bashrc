@@ -150,6 +150,10 @@ obsidian() {
     flatpak run md.obsidian.Obsidian "$@"
 }
 
+antigravity-ide() {
+  ( /opt/antigravity-ide/antigravity-ide "$@"  >/dev/null 2>&1 & )
+}
+
 # ssh agent socket
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 systemctl --user import-environment SSH_AUTH_SOCK
