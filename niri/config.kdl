@@ -363,6 +363,17 @@ window-rule {
     default-window-height { fixed 550; }
 }
 
+window-rule {
+    // Match both old gcolor3 and modern nl.hjdskes.ColorPicker (native or flatpak)
+    match app-id="^(gcolor3|nl\\.hjdskes\\.ColorPicker)$"
+    
+    // Force it to open floating
+    open-floating true
+    
+    // Set typical compact color-picker window dimensions
+    default-column-width { fixed 360; }
+    default-window-height { fixed 390; }
+}
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
