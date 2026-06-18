@@ -160,14 +160,14 @@ antigravity-ide() {
 #     export SSH_AUTH_SOCK=$(systemctl --user show-environment | grep '^SSH_AUTH_SOCK=' | cut -d= -f2)
 # fi
 
-# Dynamically import SSH socket from the user systemd environment
-if systemctl --user is-active --quiet ssh-agent; then
-    export SSH_AUTH_SOCK=$(systemctl --user show-environment | grep '^SSH_AUTH_SOCK=' | cut -d= -f2)
+# Define the standard systemd ssh-agent socket path
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
-    # If the agent is empty, find the key dynamically by reading file contents (GitHub-safe)
+# Check if the systemd socket file exists and is active
+if [ -S "$SSH_AUTH_SOCK" ]; then
+    # If the agent doesn't have keys loaded yet, find and add the first valid key
     if ! ssh-add -l >/dev/null 2>&1; then
         # Search ~/.ssh for any valid private OpenSSH/RSA/ED25519 key file
-        # This completely avoids using the filename entirely!
         local_key=$(find ~/.ssh -maxdepth 1 -type f ! -name "*.pub" ! -name "config" -exec grep -l "PRIVATE KEY" {} \+ | head -n 1)
         
         if [ -n "$local_key" ]; then
@@ -175,4 +175,3 @@ if systemctl --user is-active --quiet ssh-agent; then
         fi
     fi
 fi
-
