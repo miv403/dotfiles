@@ -16,7 +16,7 @@ layout {
     on
     }
 
-    gaps 12
+    gaps 15
     default-column-display "tabbed"
     center-focused-column "never"
     // empty-workspace-above-first
@@ -48,6 +48,7 @@ layout {
     }
 
     tab-indicator {
+        hide-when-single-tab
         place-within-column
         corner-radius 4
         width 4
@@ -58,7 +59,7 @@ layout {
 }
 
 window-rule {
-    geometry-corner-radius 8
+    geometry-corner-radius 10
     clip-to-geometry true
     draw-border-with-background false
 } 
