@@ -381,6 +381,14 @@ window-rule {
     default-floating-position x=0 y=60 relative-to="top"
 }
 
+window-rule {
+    match title="Agenda"
+    open-floating true
+    default-floating-position x=0 y=50 relative-to="top"
+    // Ekranın ortasında şık ve odaklı bir boyutta açılması için:
+    default-column-width { fixed 1000; }
+    default-window-height { fixed 650; }
+}
 
 
 binds {
@@ -405,6 +413,12 @@ binds {
     
     // calculator shortcut
     XF86Calculator { spawn "gnome-calculator";}
+
+    // org agenda
+    Mod+A { spawn "alacritty" "--title" "Agenda" "-e" "emacsclient" "-nw" "-e" "(org-agenda nil \"a\")"; }
+
+    // Fuzzel ile hızlıca andaç.org'a todo/not fırlatır
+    Mod+Shift+A { spawn "~/.config/fuzzel/scripts/fuzzel-capture.sh"; }
 
 
     Mod+Shift+Slash { show-hotkey-overlay; }

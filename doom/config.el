@@ -46,7 +46,9 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "/mnt/c/Users/ahmet emin/andaç/*/**")
+;; (setq org-directory "/mnt/c/Users/ahmet emin/andaç/*/**")
+;; (setq org-directory "/home/miv/andaç/*/**")
+(setq org-directory "~/andaç/")
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -80,3 +82,30 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(after! org-agenda
+  ;; Agenda penceresini tam ekran yapmak yerine daha temiz bir yerleşim ver
+  (setq org-agenda-window-setup 'current-window
+        org-agenda-span 'week ; Günlük odaklanma, istersen 'week yapabilirsin
+        org-agenda-start-on-weekday nil
+        ;; Şık ikonlar ve temiz ayırıcılar
+        org-agenda-current-time-string "⭠ now"
+        org-agenda-time-grid '((daily today require-timed)
+                               (800 1000 1200 1400 1600 1800 2000)
+                               "......" "────────────────" )))
+
+;; TODO keyword'lerini renklendirme ve minimalist fontlar
+(setq org-todo-keyword-faces
+      '(("TODO" . (:foreground "#ffb86c" :weight bold))
+        ("NEXT" . (:foreground "#8be9fd" :weight bold))
+        ("DONE" . (:foreground "#50fa7b" :comment t :strike-through t))
+        ("WAIT" . (:foreground "#ff5555" :weight bold))))
+
+
+(after! org
+  (setq org-capture-templates
+        '(("f" "Fuzzel Capture" entry
+           (file+headline "~/andaç/andaç.org" "Inbox")
+           "* TODO %i\nSCHEDULED: %t\n:PROPERTIES:\n:CREATED: %U\n:END:"
+           :immediate-finish t))))
+
