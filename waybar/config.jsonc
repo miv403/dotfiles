@@ -12,7 +12,8 @@
         "niri/window"
     ],
     "modules-center": [
-        "clock"
+        // "clock",
+        "custom/clock"
     ],
     "modules-right": [
         // "idle_inhibitor",
@@ -78,13 +79,20 @@
     "load": {
         "format": " {}"
     },
-    "clock": {
-        "interval": 1,
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        // "format-alt": "{:%Y-%m-%d}",
-        "format": "{:%Y-%m-%d %H:%M:%S}",
+
+    "custom/clock": {
+        "exec": "~/.config/waybar/scripts/live_clock.py",
+        "return-type": "json",
         "on-click": "alacritty --title 'Calendar' -e ikhal"
     },
+
+    // "clock": {
+    //     "interval": 1,
+    //     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    //     // "format-alt": "{:%Y-%m-%d}",
+    //     "format": "{:%Y-%m-%d %H:%M:%S}",
+    //     "on-click": "alacritty --title 'Calendar' -e ikhal"
+    // },
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false
