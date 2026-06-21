@@ -1,3 +1,6 @@
+# systemctl --user daemon-reload
+# systemctl --user enable --now vdirsyncer.timer
+
 [Unit]
 Description=vdirsyncer_timer
 

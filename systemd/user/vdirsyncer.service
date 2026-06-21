@@ -1,5 +1,11 @@
+# systemctl --user daemon-reload
+# systemctl --user start vdirsyncer.service
+# systemctl --user status vdirsyncer.service
+
 [Unit]
 Description=vdirsyncer_sync
 
 [Service]
-ExecStart=/usr/bin/vdirsyncer sync
+# ExecStart=/usr/bin/vdirsyncer sync
+# Doğrudan bizim wrapper script'i çağırıyoruz ve yanına 'sync' argümanını paslıyoruz
+ExecStart=/home/miv/.config/vdirsyncer/wrapper.sh sync
