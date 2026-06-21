@@ -155,30 +155,7 @@ antigravity-ide() {
 }
 
 vdirsyncer() {
-    # Keyring'den verileri oku
-    local cid=$(secret-tool lookup application vdirsyncer credential google_client_id)
-    local csec=$(secret-tool lookup application vdirsyncer credential google_client_secret)
-    local email=$(secret-tool lookup application vdirsyncer credential google_email)
-    local hol_id=$(secret-tool lookup application vdirsyncer credential google_holiday_id)
-    
-    if [ -z "$cid" ] || [ -z "$csec" ] || [ -z "$email" ] || [ -z "$hol_id" ]; then
-        echo "Hata: Gnome Keyring içerisinden gerekli kimlik bilgileri veya takvim ID'leri okunamadı!"
-        return 1
-    fi
-
-    export GOOGLE_CLIENT_ID="$cid"
-    export GOOGLE_CLIENT_SECRET="$csec"
-    export GOOGLE_EMAIL="$email"
-    export GOOGLE_HOLIDAY_ID="$hol_id"
-
-    # vdirsyncer'ın "config değişti" uyarısı vermemesi için sabit isimli çözülmüş config dosyası
-    local resolved_config="$HOME/.config/vdirsyncer/.config.resolved"
-    
-    envsubst '$GOOGLE_CLIENT_ID $GOOGLE_CLIENT_SECRET $GOOGLE_EMAIL $GOOGLE_HOLIDAY_ID' \
-        < ~/.config/vdirsyncer/config > "$resolved_config"
-
-    # 'command' ifadesi kabuğa "fonksiyonu değil, sistemdeki gerçek binary'yi çalıştır" der.
-    command vdirsyncer -c "$resolved_config" "$@"
+    ~/.config/vdirsyncer/wrapper.sh "$@"
 }
 
 # ssh agent socket
