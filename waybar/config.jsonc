@@ -65,8 +65,8 @@
             "paused": "⏸",
             "stopped": ""
         },
-        "dynamic-order": ["title", "artist"],
-        "ignored-players": ["firefox"]
+        "dynamic-order": ["title", "artist"]
+        // "ignored-players": ["firefox"]
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -81,8 +81,9 @@
     "clock": {
         "interval": 1,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}",
-        "format": "{:%Y-%m-%d %H:%M:%S}"
+        // "format-alt": "{:%Y-%m-%d}",
+        "format": "{:%Y-%m-%d %H:%M:%S}",
+        "on-click": "alacritty --title 'Calendar' -e ikhal"
     },
     "cpu": {
         "format": "{usage}% ",

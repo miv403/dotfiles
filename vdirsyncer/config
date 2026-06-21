@@ -1,0 +1,21 @@
+# vim: set ft=toml :
+
+[general]
+status_path = "~/.config/vdirsyncer/status/"
+
+[pair google_calendar]
+a = "google_local"
+b = "google_remote"
+
+collections = [["personal", "personal", "$GOOGLE_EMAIL"], ["tatiller", "tatiller", "$GOOGLE_HOLIDAY_ID"]]
+
+[storage google_local]
+type = "filesystem"
+path = "~/.config/vdirsyncer/pairs/google_calendar/"
+fileext = ".ics"
+
+[storage google_remote]
+type = "google_calendar"
+client_id = "$GOOGLE_CLIENT_ID"
+client_secret = "$GOOGLE_CLIENT_SECRET"
+token_file = "~/.config/vdirsyncer/google_token.json"

@@ -375,6 +375,14 @@ window-rule {
     default-window-height { fixed 390; }
 }
 
+window-rule {
+    match title="Calendar"
+    open-floating true
+    default-floating-position x=0 y=60 relative-to="top"
+}
+
+
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program

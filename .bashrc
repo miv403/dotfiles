@@ -154,6 +154,33 @@ antigravity-ide() {
   ( /opt/antigravity-ide/antigravity-ide "$@"  >/dev/null 2>&1 & )
 }
 
+vdirsyncer() {
+    # Keyring'den verileri oku
+    local cid=$(secret-tool lookup application vdirsyncer credential google_client_id)
+    local csec=$(secret-tool lookup application vdirsyncer credential google_client_secret)
+    local email=$(secret-tool lookup application vdirsyncer credential google_email)
+    local hol_id=$(secret-tool lookup application vdirsyncer credential google_holiday_id)
+    
+    if [ -z "$cid" ] || [ -z "$csec" ] || [ -z "$email" ] || [ -z "$hol_id" ]; then
+        echo "Hata: Gnome Keyring içerisinden gerekli kimlik bilgileri veya takvim ID'leri okunamadı!"
+        return 1
+    fi
+
+    export GOOGLE_CLIENT_ID="$cid"
+    export GOOGLE_CLIENT_SECRET="$csec"
+    export GOOGLE_EMAIL="$email"
+    export GOOGLE_HOLIDAY_ID="$hol_id"
+
+    # vdirsyncer'ın "config değişti" uyarısı vermemesi için sabit isimli çözülmüş config dosyası
+    local resolved_config="$HOME/.config/vdirsyncer/.config.resolved"
+    
+    envsubst '$GOOGLE_CLIENT_ID $GOOGLE_CLIENT_SECRET $GOOGLE_EMAIL $GOOGLE_HOLIDAY_ID' \
+        < ~/.config/vdirsyncer/config > "$resolved_config"
+
+    # 'command' ifadesi kabuğa "fonksiyonu değil, sistemdeki gerçek binary'yi çalıştır" der.
+    command vdirsyncer -c "$resolved_config" "$@"
+}
+
 # ssh agent socket
 # Dynamically import SSH socket from the user systemd environment
 # if systemctl --user is-active --quiet ssh-agent; then
@@ -175,3 +202,19 @@ if [ -S "$SSH_AUTH_SOCK" ]; then
         fi
     fi
 fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/etc/profile.d/conda.sh" ]; then
+        . "/usr/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

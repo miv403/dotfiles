@@ -1,0 +1,28 @@
+# vim: ft=toml :
+
+[calendars]
+# [[kisisel]]
+# path = ~/.config/vdirsyncer/pairs/google_calendar/primary/
+# type = discover
+
+[[personal]]
+path = ~/.config/vdirsyncer/pairs/google_calendar/personal
+type = discover
+
+[[tatiller]]
+path = ~/.config/vdirsyncer/pairs/google_calendar/tatiller
+type = discover
+
+[locale]
+timeformat = %H:%M
+dateformat = %Y-%m-%d
+longdateformat = %Y-%m-%d
+datetimeformat = %Y-%m-%d %H:%M
+longdatetimeformat = %Y-%m-%d %H:%M
+# firstdayofweek = 0 # Pazar için 0, Pazartesi için 1
+
+[default]
+default_calendar = personal1
+
+[view]
+theme = dark
