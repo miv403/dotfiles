@@ -14,4 +14,4 @@ fi
 # x-escape ve tırnak sorunlarını önlemek için tek satırlık temiz Elisp:
 emacsclient --eval "(org-capture-string \"$ENTRY\" \"f\")" > /dev/null 2>&1
 
-notify-send "Not Saved" "$ENTRY" -i org.gnu.emacs
+notify-send "Note Saved" "$ENTRY" -i org.gnu.emacs

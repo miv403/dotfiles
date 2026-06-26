@@ -1,3 +1,4 @@
+# https://github.com/alacritty/alacritty-theme/blob/master/themes/gruvbox_dark.toml
 # Colors (Gruvbox dark)
 [bell]
 animation = "EaseOutSine"

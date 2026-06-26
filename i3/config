@@ -24,7 +24,7 @@ gaps outer 3
 exec --no-startup xrandr --output LVDS1 --mode 1024x600
 
 # wallpaper
-exec --no-startup-id feh --bg-scale /home/mivlab/Pictures/wallpaper.jpg
+exec --no-startup-id feh --bg-scale /home/miv/Pictures/wallpaper.jpg
 
 # rofi-tdk
 exec /home/mivlab/.local/bin/rofi-tdk.sh init
@@ -76,8 +76,8 @@ exec move tiling windows via drag & drop by left-clicking into the title bar,
 tiling_drag modifier titlebar
 
 # start a terminal
-# bindsym $mod+Return exec alacritty
-bindsym $mod+Return exec st
+bindsym $mod+Return exec alacritty
+# bindsym $mod+Return exec st
 
 # kill focused window
 bindsym $mod+Shift+q kill
