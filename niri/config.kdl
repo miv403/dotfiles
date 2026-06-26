@@ -287,8 +287,8 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/miv/Pictures/Wallpapers/tumblr_6834220837f98bc3ad8e54f64e3c6efc_90622355_2048.jpg"
-spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
-spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"  "-max-items" "100"  
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store" "-max-items" "100" 
 
 spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
 
@@ -473,8 +473,10 @@ binds {
     // ocr script
     Mod+Shift+T { spawn "~/.local/bin/niri-ocr"; }
     
-    // clipboard
+    // clipboard::https://github.com/sentriz/cliphist
+    // cliphist wipe
     Mod+Alt+V { spawn "sh" "-c" "cliphist list | fuzzel -d | cliphist decode | wl-copy"; }
+    Mod+Alt+Ctrl+V { spawn "sh" "-c" "cliphist list | fuzzel -d | cliphist delete"; }
     
     // calculator shortcut
     XF86Calculator { spawn "gnome-calculator";}
