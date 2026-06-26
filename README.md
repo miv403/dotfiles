@@ -1,6 +1,10 @@
-#+title: dotfiles
-#+description: miv403's configuration files
-#+author: miv403
+# dotfiles
 
-** yes
+> miv403's configuration files
+
+**mako niri**
+
+```bash
+systemctl --user add-wants niri.service mako.service
+```
 
