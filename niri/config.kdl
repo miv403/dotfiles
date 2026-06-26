@@ -75,35 +75,52 @@ input {
 // Find more information on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-/-output "eDP-1" {
-    // Uncomment this line to disable this output.
-    // off
+//
+///-output "eDP-1" {
+//    // Uncomment this line to disable this output.
+//    // off
+//
+//    // Resolution and, optionally, refresh rate of the output.
+//    // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
+//    // If the refresh rate is omitted, niri will pick the highest refresh rate
+//    // for the resolution.
+//    // If the mode is omitted altogether or is invalid, niri will pick one automatically.
+//    // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
+//    mode "1920x1080@120.030"
+//
+//    // You can use integer or fractional scale, for example use 1.5 for 150% scale.
+//    scale 2
+//
+//    // Transform allows to rotate the output counter-clockwise, valid values are:
+//    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
+//    transform "normal"
+//
+//    // Position of the output in the global coordinate space.
+//    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
+//    // The cursor can only move between directly adjacent outputs.
+//    // Output scale and rotation has to be taken into account for positioning:
+//    // outputs are sized in logical, or scaled, pixels.
+//    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
+//    // so to put another output directly adjacent to it on the right, set its x to 1920.
+//    // If the position is unset or results in an overlap, the output is instead placed
+//    // automatically.
+//    position x=1280 y=0
+//}
 
-    // Resolution and, optionally, refresh rate of the output.
-    // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
-    // If the refresh rate is omitted, niri will pick the highest refresh rate
-    // for the resolution.
-    // If the mode is omitted altogether or is invalid, niri will pick one automatically.
-    // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@120.030"
+output "eDP-1" {
 
-    // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 2
+  mode "1920x1080@60.004"
+  scale 1.0
+  position x=1920 y=0
 
-    // Transform allows to rotate the output counter-clockwise, valid values are:
-    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
-    transform "normal"
+}
 
-    // Position of the output in the global coordinate space.
-    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
-    // The cursor can only move between directly adjacent outputs.
-    // Output scale and rotation has to be taken into account for positioning:
-    // outputs are sized in logical, or scaled, pixels.
-    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
-    // so to put another output directly adjacent to it on the right, set its x to 1920.
-    // If the position is unset or results in an overlap, the output is instead placed
-    // automatically.
-    position x=1280 y=0
+output "HDMI-A-1" {
+
+  mode "1920x1080@74.973"
+  scale 1.0
+  position x=0 y=0
+
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -275,6 +292,8 @@ spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
 
 spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
 
+// spawn-at-startup "avizo-service"
+
 // To run a shell command (with variables, pipes, etc.), use spawna-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
@@ -390,6 +409,52 @@ window-rule {
     default-window-height { fixed 650; }
 }
 
+window-rule {
+    // Match both old gcolor3 and modern nl.hjdskes.ColorPicker (native or flatpak)
+    match app-id="^app\\.drey\\.Dialect$"
+    
+    // Force it to open floating
+    open-floating true
+    
+    // Set typical compact color-picker window dimensions
+    default-column-width { fixed 800; }
+    default-window-height { fixed 320; }
+    default-floating-position x=30 y=50 relative-to="top-right"
+}
+
+window-rule {
+    match title="Citation Dialog"
+    open-floating true
+    default-floating-position x=0 y=100 relative-to="top"
+    default-column-width { fixed 940; }
+    default-window-height { fixed 320; }
+
+
+}
+window-rule {
+    // Sadece app-id'si 'scratchpad' olan pencereleri yakala
+    match app-id="scratchpad"
+
+    open-floating true
+    default-floating-position x=0 y=50 relative-to="top"
+    // Ekranın ortasında şık ve odaklı bir boyutta açılması için:
+    default-column-width { fixed 1000; }
+    default-window-height { fixed 650; }
+}
+
+window-rule {
+    // Mousam için kural
+    match app-id="^io\\.github\\.amit9838\\.mousam$"
+    
+    // VEYA terminal alternatifini seçeceksen onun için kural:
+    // match app-id="weather-terminal"
+
+    open-floating true
+    
+    // İstediğin tam boyutlar (Piksel cinsinden)
+    default-column-width { fixed 990; }
+    default-window-height { fixed 768; }
+}
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
@@ -419,7 +484,9 @@ binds {
 
     // Fuzzel ile hızlıca andaç.org'a todo/not fırlatır
     Mod+Shift+A { spawn "~/.config/fuzzel/scripts/fuzzel-capture.sh"; }
-
+    
+    // terminal tmux scratchpad
+    Mod+Shift+Return { spawn "~/.config/niri/scripts/niri-scratchpad.sh"; }
 
     Mod+Shift+Slash { show-hotkey-overlay; }
 
@@ -438,10 +505,21 @@ binds {
     // The allow-when-locked=true property makes them work even when the session is locked.
     // Using spawn-sh allows to pass multiple arguments together with the command.
     // "-l 1.0" limits the volume to 100%.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    // XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+    // XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    // XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    // XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+    // XF86AudioRaiseVolume allow-when-locked=true { spawn "volumectl" "-u" "up"; }
+    // XF86AudioLowerVolume allow-when-locked=true { spawn "volumectl" "-u" "down"; }
+    // XF86AudioMute        allow-when-locked=true { spawn "volumectl" "toggle-mute"; }
+    // XF86AudioMicMute     allow-when-locked=true { spawn "volumectl" "-m" "toggle-mute"; }
+
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "~/.config/niri/scripts/volumeosd.sh" "up"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "~/.config/niri/scripts/volumeosd.sh" "down"; }
+    XF86AudioMute        allow-when-locked=true { spawn "~/.config/niri/scripts/volumeosd.sh" "mute"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
     // Example media keys mapping using playerctl.
     // This will work with any MPRIS-enabled media player.
@@ -453,8 +531,14 @@ binds {
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
     // but you need to manually put each argument in separate "" quotes.
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    // XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    // XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+
+    // XF86MonBrightnessUp   allow-when-locked=true { spawn "lightctl" "up"; }
+    // XF86MonBrightnessDown allow-when-locked=true { spawn "lightctl" "down"; }
+
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "~/.config/niri/scripts/brightnessosd.sh" "up"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "~/.config/niri/scripts/brightnessosd.sh" "down"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,

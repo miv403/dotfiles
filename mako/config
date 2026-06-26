@@ -1,4 +1,5 @@
 # ~/.config/mako/config
+# vim: set ft=toml :
 
 font=VictorMono NF 11
 background-color=#282828
@@ -28,3 +29,25 @@ default-timeout=0
 border-color=#fb4934
 default-timeout=0
 
+# Global configuration for progress color (if not already set)
+progress-color=over #5588AAFF
+
+# Volume-specific notification look
+[app-name=volume]
+history=0
+default-timeout=600
+anchor=top-center
+width=200
+
+[app-name=muted]
+history=0
+default-timeout=600
+anchor=top-center
+width=200
+background-color=#442222FF
+
+[app-name=brightness]
+history=0
+default-timeout=600
+anchor=top-center
+width=200
