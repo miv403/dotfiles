@@ -3,7 +3,7 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 30,
+    "height": 35,
     "spacing": 4,
     "modules-left": [
         "niri/workspaces",
@@ -13,6 +13,7 @@
     ],
     "modules-center": [
         // "clock",
+        "custom/weather",
         "custom/clock"
     ],
     "modules-right": [
@@ -37,7 +38,7 @@
     },
     "niri/window": {
         "format": "{}",
-        "max-length": 50
+        "max-length": 30
     },
     "cava": {
         "framerate": 30,
@@ -155,5 +156,16 @@
         "on-click": "cliphist list | fuzzel -d | cliphist decode | wl-copy",
         "on-click-right": "cliphist wipe && notify-send 'Clipboard Cleared'",
         "tooltip-format": "Left-click: Open History\nRight-click: Clear History"
+    },
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "interval": 1800, // 30 dakikada bir güncelle
+        "exec": "~/.config/waybar/scripts/waybar-wttr.py",
+        "return-type": "json",
+        "on-click": "flatpak run io.github.amit9838.mousam" 
+        // Eğer flatpak değilse direkt "mousam" yazabilirsin
+        // "on-click": "alacritty --class weather-terminal -e sh -c 'curl -s wttr.in; read -n 1 -p \"Press any key to close...\"'"
     }
+
 }
