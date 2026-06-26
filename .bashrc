@@ -25,7 +25,6 @@ fi
 unset rc
 
 # oh-my-posh
-
 eval "$($HOME/.local/bin/oh-my-posh --init --shell bash --config ~/.poshthemes/onehalf.minimal.omp.json)"        
 
 # add .local/bin to path
@@ -44,7 +43,7 @@ export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
 
 # alias stajnvim="cd $HOME/programming/staj/esp32-mpu9520/ && nvim ."
-alias staj="cd $HOME/programming/staj/"
+# alias staj="cd $HOME/programming/staj/"
 
 # open org-agenda with neovim
 alias andaç="nvim $HOME/andaç"
@@ -76,7 +75,7 @@ limit() {
 
 alias man="batman"
 # alias grep="batgrep"
-alias diff="batdiff --color"
+# alias diff="batdiff --color"
 
 export PATH=$PATH:~/.spoofdpi/bin
 export PATH=${PATH}:/usr/local/cuda-13.1/bin
@@ -179,19 +178,4 @@ if [ -S "$SSH_AUTH_SOCK" ]; then
         fi
     fi
 fi
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/etc/profile.d/conda.sh" ]; then
-        . "/usr/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
