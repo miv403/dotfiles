@@ -378,8 +378,9 @@ window-rule {
     open-floating true
     
     // Set the small, fixed window dimensions
-    default-column-width { fixed 400; }
-    default-window-height { fixed 550; }
+    default-column-width { fixed 300; }
+    default-window-height { fixed 616; }
+    default-floating-position x=30 y=30 relative-to="bottom-right"
 }
 
 window-rule {
