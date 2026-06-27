@@ -22,7 +22,8 @@
         "custom/clipboard",
         "cpu",
         "memory",
-        "temperature",
+        // "temperature",
+        "custom/temperature",
         "wireplumber",
         "backlight",
         "network",
@@ -101,11 +102,20 @@
     "memory": {
         "format": "{}% "
     },
-    "temperature": {
-        "critical-threshold": 80,
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+    // "temperature": {
+    //     "critical-threshold": 80,
+    //     "format": "{temperatureC}°C {icon}",
+    //     "format-icons": ["", "", ""]
+    // },
+
+    "custom/temperature": {
+        "exec": "~/.config/waybar/scripts/temp.sh",
+        "interval": 5,
+        "return-type": "json",
+        "format": "{}",
+        "tooltip": true
     },
+
     "backlight": {
         "format": "{percent}% {icon}",
         "format-icons": ["󰃞", "󰃝", "󰃟", "󰃠"]
@@ -125,7 +135,7 @@
         },
         "format": "{capacity}% {icon}",
         "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""]
@@ -134,12 +144,12 @@
         "scroll-step": 5,
         "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon}",
-        "format-bluetooth-muted": " {icon}",
+        "format-bluetooth-muted": " {icon}",
         "format-muted": "",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "󰏳",
+            "headset": "󰋎",
             "phone": "",
             "portable": "",
             "car": "",
