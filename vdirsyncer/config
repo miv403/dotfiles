@@ -6,6 +6,7 @@ status_path = "~/.config/vdirsyncer/status/"
 [pair google_calendar]
 a = "google_local"
 b = "google_remote"
+# conflict_resolution = "a wins"
 
 collections = [["personal", "personal", "$GOOGLE_EMAIL"], ["tatiller", "tatiller", "$GOOGLE_HOLIDAY_ID"]]
 
