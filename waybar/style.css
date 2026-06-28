@@ -113,12 +113,12 @@ button {
 }
 
 #custom-temperature.normal {
-    /* color: #a6e3a1; */
-    color: #fabd2f;
+    color: #a6e3a1;
+    /* color: #f9e2af; */
 }
 
 #custom-temperature.warning {
-    color: #f9e2af;
+    color: #fabd2f;
 }
 
 #custom-temperature.critical {
