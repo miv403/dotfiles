@@ -286,7 +286,8 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
-spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/miv/Pictures/Wallpapers/tumblr_6834220837f98bc3ad8e54f64e3c6efc_90622355_2048.jpg"
+// spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/miv/Pictures/Wallpapers/tumblr_6834220837f98bc3ad8e54f64e3c6efc_90622355_2048.jpg"
+spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/miv/Pictures/Wallpapers/tumblr_7a2c1511e8774f84f0b88ccc6fbd27bb_9bb57419_2048 (Copy).jpg"
 spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"  "-max-items" "100"  
 spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store" "-max-items" "100" 
 
@@ -457,6 +458,14 @@ window-rule {
     default-window-height { fixed 768; }
 }
 
+window-rule {
+    match app-id="^io\\.github\\.nokse22\\.minitext$"
+    open-floating true
+    default-column-width { fixed 360; }
+    default-window-height { fixed 370; }
+    default-floating-position x=30 y=50 relative-to="top-right"
+}
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
@@ -490,6 +499,9 @@ binds {
     
     // terminal tmux scratchpad
     Mod+Shift+Return { spawn "~/.config/niri/scripts/niri-scratchpad.sh"; }
+  
+    // open Calendar
+    Mod+Shift+C { spawn "alacritty" "--title" "Calendar" "-e" "ikhal";  }
 
     Mod+Shift+Slash { show-hotkey-overlay; }
 
