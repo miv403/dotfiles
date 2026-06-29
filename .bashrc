@@ -157,6 +157,14 @@ vdirsyncer() {
     ~/.config/vdirsyncer/wrapper.sh "$@"
 }
 
+date() {
+    if [[ $1 = "YMD" ]] then
+      /usr/bin/env date --utc +%Y-%m-%d
+    else
+      /usr/bin/env date --utc +%Y-%m-%dT%H:%M:%S%Z
+    fi
+}
+
 # ssh agent socket
 # Dynamically import SSH socket from the user systemd environment
 # if systemctl --user is-active --quiet ssh-agent; then
