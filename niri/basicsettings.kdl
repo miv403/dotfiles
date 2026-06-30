@@ -16,8 +16,8 @@ layout {
     on
     }
 
-    gaps 15
-    default-column-display "tabbed"
+    gaps 16
+    default-column-display "normal"
     center-focused-column "never"
     // empty-workspace-above-first
 
@@ -29,16 +29,16 @@ layout {
     }
 
     focus-ring {
-        on
+        off
         width 2
-        active-color "#d79921"
+        active-color "#ba831c"
         inactive-color "#505050"
     }
 
     border {
-        off
+        on
         width 2
-        active-color "#d79921"
+        active-color "#ba831c"
         inactive-color "#505050"
     }
 
@@ -59,7 +59,7 @@ layout {
 }
 
 window-rule {
-    geometry-corner-radius 10
+    geometry-corner-radius 16
     clip-to-geometry true
     draw-border-with-background false
 } 
@@ -76,7 +76,7 @@ input {
         // dwt
         // dwtp
         natural-scroll
-        drag false
+        drag true
         // drag-lock
         // disabled-on-external-mouse
         // left-handed
@@ -124,3 +124,6 @@ cursor {
     // hide-when-typing 
     // hide-after-inactive-ms {self.behavior_tab.inactive_spinbox.value()}
 }
+
+    // Settings of niri-settings
+    // * do not show backups
