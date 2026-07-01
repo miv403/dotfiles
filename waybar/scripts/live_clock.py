@@ -6,6 +6,26 @@ import calendar
 from datetime import datetime
 from wcwidth import wcswidth
 
+
+"""
+WARNING, USE CAREFUL THIS SCRIPT
+
+this script pushes json every second so it can crash waybar.
+you can execute waybar like this or don't use seconds in your clock
+
+this brokes out waybar from parent's process group also redirects
+stdout/err.
+
+(setsid waybar) >/dev/null 2>&1 &
+
+if you need the logs you can execute from niri like this so
+you will have ephemaral log for every session.
+
+spawn-at-startup "sh" "-c" "exec waybar > /run/user/1000/waybar.log 2>&1"
+
+https://github.com/Alexays/waybar/issues/5117
+"""
+
 last_update = 0
 
 def clamp_to_calendar_grid(text, max_width=21):
