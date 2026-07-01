@@ -158,12 +158,42 @@ vdirsyncer() {
 }
 
 date() {
-    if [[ $1 = "YMD" ]] then
-      /usr/bin/env date --utc +%Y-%m-%d
-    else
-      /usr/bin/env date --utc +%Y-%m-%dT%H:%M:%S%Z
-    fi
+  if [[ $1 = "YMD" ]]
+  then
+    /usr/bin/env date +%Y-%m-%d
+    return 0
+  elif [[ -z "$1" ]]
+  then
+    /usr/bin/env date +%Y-%m-%dT%H:%M:%S%Z
+    return 0
+  fi
+
+  echo "Use YMD as option or use without option."
+  return 1
 }
+
+trace-and-notify() {
+  [ -z "$1" ] && echo "Provide PID: 'trace-and-notify 12345'" && return 1
+  
+  local PID="$1"
+  
+  # Fetch the name before the process dies
+  local PROC_NAME
+  if [ -f "/proc/$PID/comm" ]; then
+    PROC_NAME=$(cat "/proc/$PID/comm")
+  else
+    PROC_NAME="Unknown Process"
+  fi
+
+  echo "Waiting for $PROC_NAME (PID: $PID) to finish..."
+
+  while kill -0 "$PID" 2>/dev/null; do 
+    sleep 1
+  done
+  
+  notify-send "Process Finished" "$PROC_NAME (PID: $PID) has ended or was killed. $(date)"
+}
+
 
 # ssh agent socket
 # Dynamically import SSH socket from the user systemd environment
