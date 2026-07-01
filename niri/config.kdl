@@ -3,6 +3,9 @@
 // Check the wiki for a full description of the configuration:
 // https://niri-wm.github.io/niri/Configuration:-Introduction
 
+// wayland environment export
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "NIRI_SOCKET"
+
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Input
@@ -286,11 +289,17 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "waybar"
+// spawn-at-startup "waybar"
+// waybar stdout/err yönlendirmesi. IPC çakışmasını önlemek için
+spawn-at-startup "sh" "-c" "exec waybar > /run/user/1000/waybar.log 2>&1"
+
+
+// Wallpaper
 // spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/miv/Pictures/Wallpapers/tumblr_6834220837f98bc3ad8e54f64e3c6efc_90622355_2048.jpg"
 spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/miv/Pictures/Wallpapers/tumblr_7a2c1511e8774f84f0b88ccc6fbd27bb_9bb57419_2048 (Copy).jpg"
-spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"  "-max-items" "100"  
-spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store" "-max-items" "100" 
+
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"  "-max-items" "100"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store" "-max-items" "100"
 
 spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
 
