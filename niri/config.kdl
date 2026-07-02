@@ -291,8 +291,11 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 // spawn-at-startup "waybar"
 // waybar stdout/err yönlendirmesi. IPC çakışmasını önlemek için
-spawn-at-startup "sh" "-c" "exec waybar > /run/user/1000/waybar.log 2>&1"
-
+// spawn-at-startup "sh" "-c" "exec waybar > /run/user/1000/waybar.log 2>&1"
+// setsid: set session id (with -w flag)
+// farklı process group altında başlatarak group-wide sinyalleri alıp çökmesini
+// engelliyor.
+spawn-at-startup "sh" "-c" "while true; do setsid -w waybar > /run/user/1000/waybar.log 2>&1; notify-send 'Waybar Process Interrupted' 'Restarting bar...\n$(date)'; sleep 2; done"
 
 // Wallpaper
 // spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/miv/Pictures/Wallpapers/tumblr_6834220837f98bc3ad8e54f64e3c6efc_90622355_2048.jpg"
