@@ -295,11 +295,13 @@ layout {
 // setsid: set session id (with -w flag)
 // farklı process group altında başlatarak group-wide sinyalleri alıp çökmesini
 // engelliyor.
-spawn-at-startup "sh" "-c" "while true; do setsid -w waybar > /run/user/1000/waybar.log 2>&1; notify-send 'Waybar Process Interrupted' 'Restarting bar...\n$(date)'; sleep 2; done"
+// spawn-at-startup "sh" "-c" "while true; do setsid -w waybar > /run/user/1000/waybar.log 2>&1; notify-send 'Waybar Process Interrupted' 'Restarting bar...\n$(date)'; sleep 2; done"
+// spawn-at-startup "sh" "-c" "i=0; while (( i++ <= 3 )); do setsid -w waybar >/run/user/1000/waybar-$i.log 2>&1; notify-send 'Waybar Process Interrupted' 'Restarting bar...'; sleep 2; done"
+spawn-at-startup "~/.config/niri/scripts/waybar.sh"
 
 // Wallpaper
-// spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/miv/Pictures/Wallpapers/tumblr_6834220837f98bc3ad8e54f64e3c6efc_90622355_2048.jpg"
-spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/miv/Pictures/Wallpapers/tumblr_7a2c1511e8774f84f0b88ccc6fbd27bb_9bb57419_2048 (Copy).jpg"
+spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/miv/Pictures/Wallpapers/tumblr_6834220837f98bc3ad8e54f64e3c6efc_90622355_2048.jpg"
+// spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/miv/Pictures/Wallpapers/tumblr_7a2c1511e8774f84f0b88ccc6fbd27bb_9bb57419_2048 (Copy).jpg"
 
 spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"  "-max-items" "100"
 spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store" "-max-items" "100"
@@ -479,6 +481,12 @@ window-rule {
     default-floating-position x=30 y=50 relative-to="top-right"
 }
 
+window-rule { // https://github.com/mohitraghav1318/NiriSeek
+  match app-id="dev.mohit.NiriSeek"
+  open-floating true
+}
+
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
@@ -509,7 +517,7 @@ binds {
 
     // Fuzzel ile hızlıca andaç.org'a todo/not fırlatır
     Mod+Shift+A { spawn "~/.config/fuzzel/scripts/fuzzel-capture.sh"; }
-    
+
     // terminal tmux scratchpad
     Mod+Shift+Return { spawn "~/.config/niri/scripts/niri-scratchpad.sh"; }
   
@@ -518,6 +526,8 @@ binds {
 
     Mod+Shift+Slash { show-hotkey-overlay; }
 
+    Mod+Tab { spawn "niriseek"; } // https://github.com/mohitraghav1318/NiriSeek 
+      
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }

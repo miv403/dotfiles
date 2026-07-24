@@ -78,7 +78,7 @@ while True:
         last_update = current_time
 
     out = {
-        "text": now.strftime("%Y-%m-%d %H:%M:%S"),
+        "text": now.strftime("%Y-%m-%d %a %H:%M:%S"),
         "tooltip": f"{khal_month}\nThis Week\n{khal_week}"
     }
 

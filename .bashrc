@@ -25,10 +25,7 @@ fi
 unset rc
 
 # oh-my-posh
-eval "$($HOME/.local/bin/oh-my-posh --init --shell bash --config ~/.poshthemes/onehalf.minimal.omp.json)"        
-
-# add .local/bin to path
-export PATH=$HOME/.local/bin:$PATH
+eval "$($HOME/.local/bin/oh-my-posh --init --shell bash --config ~/.poshthemes/onehalf.minimal.omp.json)"
 
 # $EDITOR=vim
 export EDITOR=/usr/bin/vim
@@ -42,14 +39,13 @@ export PATH=$HOME/.cargo/bin:$PATH
 # go/bin bin path
 export PATH=$HOME/go/bin:$PATH
 
-# alias stajnvim="cd $HOME/programming/staj/esp32-mpu9520/ && nvim ."
-# alias staj="cd $HOME/programming/staj/"
+export PATH=$PATH:~/.spoofdpi/bin
+export PATH=${PATH}:/usr/local/cuda-13.1/bin
 
 # open org-agenda with neovim
 alias andaç="nvim $HOME/andaç"
 
 # supergfxctl alias
-
 alias Integrated="supergfxctl -m Integrated"
 alias Hybrid="supergfxctl -m Hybrid"
 alias AsusMuxDgpu="supergfxctl -m AsusMuxDgpu"
@@ -57,10 +53,8 @@ alias super="supergfxctl"
 alias superg="supergfxctl -g"
 
 # asusctl profile alias
-
 alias profile="asusctl profile get"
 alias list-profile="asusctl profile list"
-
 alias Quiet="asusctl profile set Quiet"
 alias Balanced="asusctl profile set Balanced"
 alias Performance="asusctl profile set Performance"
@@ -68,26 +62,24 @@ alias oneshot="asusctl battery oneshot"
 alias batinfo="asusctl battery info"
 
 limit() {
-  asusctl battery limit $1
+  asusctl battery limit "$1"
 }
 
-# bat aliases
+export BAT_THEME="gruvbox-dark"
 
+# bat aliases
 alias man="batman"
+# export MANPAGER="bat -plman"
 # alias grep="batgrep"
 # alias diff="batdiff --color"
+alias bathelp="bat --plain --language=help --theme $BAT_THEME"
 
-export PATH=$PATH:~/.spoofdpi/bin
-export PATH=${PATH}:/usr/local/cuda-13.1/bin
-
-# ysa() {
-#   cd "$HOME/workspace/ysa/$1"
-# }
+# alias copybara="java -jar $HOME/.local/bin/copybara_deploy.jar"
 
 # git aliases
 
 commit() {
-  git commit "$1" "$2"
+  git commit "$@"
 }
 
 push() {
@@ -95,7 +87,7 @@ push() {
 }
 
 add(){
-  git add $@
+  git add "$@"
 }
 
 init() {
@@ -111,11 +103,11 @@ status() {
 }
 
 checkout() {
-  git checkout "$1"
+  git checkout "$@"
 }
 
 branch() {
-  git branch "$1"
+  git branch "$@"
 }
 
 wg-nl() {
@@ -194,6 +186,14 @@ trace-and-notify() {
   notify-send "Process Finished" "$PROC_NAME (PID: $PID) has ended or was killed. $(date)"
 }
 
+rsync() {
+  # --recursive,
+  # --partial & --progress,
+  # --archive,
+  # --verbose
+  # --human-readable
+  /usr/bin/env rsync -rPavh "$@"
+}
 
 # ssh agent socket
 # Dynamically import SSH socket from the user systemd environment
@@ -210,7 +210,7 @@ if [ -S "$SSH_AUTH_SOCK" ]; then
     if ! ssh-add -l >/dev/null 2>&1; then
         # Search ~/.ssh for any valid private OpenSSH/RSA/ED25519 key file
         local_key=$(find ~/.ssh -maxdepth 1 -type f ! -name "*.pub" ! -name "config" -exec grep -l "PRIVATE KEY" {} \+ | head -n 1)
-        
+
         if [ -n "$local_key" ]; then
             ssh-add "$local_key" 2>/dev/null
         fi

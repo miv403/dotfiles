@@ -19,7 +19,8 @@ WEATHER_CODES = {
     '392': '❄️', '395': '❄️'
 }
 
-LOCATION = "Trabzon"
+# LOCATION = "Trabzon"
+LOCATION = "Ankara+Söğütözü"
 
 data = {}
 try:
@@ -36,7 +37,7 @@ try:
     data['text'] = f"{icon} {temp}°C"
     data['tooltip'] = f"Feels Like: {current['FeelsLikeC']}°C\nHumidity: {current['humidity']}%\nWind: {current['windspeedKmph']} km/h"
 except Exception:
-    data['text'] = "✨ N/A"
+    data['text'] = " N/A"
     data['tooltip'] = "Connection Error"
 
 print(json.dumps(data))

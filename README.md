@@ -22,6 +22,7 @@ systemctl --user add-wants niri.service mako.service
   - org capture (fuzzel-capture)
   - clipboard (cliphist)
 - niri-ocr: uses tesseract for turkish & english image-to-text extraction
+- [selectra](https://github.com/miv403/selectra): tureng dictionary lookup with notification
 
 ### terminal
 
