@@ -23,9 +23,9 @@ vol_status=$(echo "$volume" | cut -d" " -f3)
 
 if [ "$vol_status" = "[MUTED]" ]; then
     # Correct hint key for Mako to overwrite the existing popup
-    notify-send -a "muted" -h string:x-canonical-private-synchronous:volume -h int:value:"$vol_value" "Muted           [$vol_value]"
+    notify-send -a "muted" -h string:x-canonical-private-synchronous:volume -h int:value:"$vol_value" "Muted          [$vol_value]"
     exit 0
 fi
 
 # Correct hint key for Mako to overwrite the existing popup
-notify-send -a "volume" -h string:x-canonical-private-synchronous:volume -h int:value:"$vol_value" "Volume          [$vol_value]"
+notify-send -a "volume" -h string:x-canonical-private-synchronous:volume -h int:value:"$vol_value" "Volume         [$vol_value]"

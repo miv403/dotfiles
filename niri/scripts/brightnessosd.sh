@@ -15,4 +15,4 @@ esac
 bright_value=$(brightnessctl -m | cut -d, -f4 | tr -d '%')
 
 # Send to Mako using the same synchronous engine
-notify-send -a "brightness" -h string:x-canonical-private-synchronous:brightness -h int:value:"$bright_value" "Brightness"
+notify-send -a "brightness" -h string:x-canonical-private-synchronous:brightness -h int:value:"$bright_value" "Brightness     [$bright_value]"
