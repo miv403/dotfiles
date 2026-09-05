@@ -19,8 +19,8 @@ WEATHER_CODES = {
     '392': '❄️', '395': '❄️'
 }
 
-# LOCATION = "Trabzon"
-LOCATION = "Ankara+Söğütözü"
+LOCATION = "Trabzon"
+# LOCATION = "Ankara+Söğütözü"
 
 data = {}
 try:

@@ -31,14 +31,14 @@ layout {
     focus-ring {
         off
         width 2
-        active-color "#ba831c"
+        active-color "#df880b"
         inactive-color "#505050"
     }
 
     border {
         on
         width 2
-        active-color "#ba831c"
+        active-color "#df880b"
         inactive-color "#505050"
     }
 
@@ -59,7 +59,7 @@ layout {
 }
 
 window-rule {
-    geometry-corner-radius 16
+    geometry-corner-radius 8
     clip-to-geometry true
     draw-border-with-background false
 } 
@@ -73,7 +73,7 @@ input {
     
     touchpad {
         tap
-        // dwt
+        dwt
         // dwtp
         natural-scroll
         drag true
@@ -100,6 +100,9 @@ input {
     keyboard {
         track-layout "window"
         numlock
+        xkb {
+            layout "tr"
+        }
         repeat-delay 600
         repeat-rate 25
     }
