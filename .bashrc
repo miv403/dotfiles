@@ -217,3 +217,6 @@ if [ -S "$SSH_AUTH_SOCK" ]; then
     fi
 fi
 
+
+
+eval "$(zoxide init bash)"
