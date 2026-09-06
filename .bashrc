@@ -42,6 +42,9 @@ export PATH=$HOME/go/bin:$PATH
 export PATH=$PATH:~/.spoofdpi/bin
 export PATH=${PATH}:/usr/local/cuda-13.1/bin
 
+# rofi-tdk database
+export DATABASE="$HOME/.local/share/rofi-tdk.tar.gz"
+
 # open org-agenda with neovim
 alias andaç="nvim $HOME/andaç"
 
