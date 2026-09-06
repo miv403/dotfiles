@@ -1,0 +1,79 @@
+/* Gruvbox Dark Palette */
+@define-color bg #282828;
+@define-color bg_selection #3c3836;
+@define-color fg #ebdbb2;
+@define-color orange #fe8019;
+@define-color yellow #fabd2f;
+@define-color border #504945;
+
+window {
+    margin: 0px;
+    background-color: @bg;
+    border: 2px solid @border;
+    border-radius: 8px;
+    font-family: "Victor Mono Nerd Font", monospace;
+    font-size: 13px;
+}
+
+#outer-box {
+    margin: 0px;
+    padding: 8px;
+    background-color: @bg;
+}
+
+#input {
+    margin: 4px 4px 8px 4px;
+    padding: 6px 10px;
+    border: 1px solid @border;
+    border-radius: 6px;
+    color: @fg;
+    background-color: @bg_selection;
+}
+
+#input:focus {
+    border: 1px solid @orange;
+    outline: none;
+}
+
+#scroll {
+    margin: 0px;
+    border: none;
+}
+
+#inner-box {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    background-color: transparent;
+}
+
+/* Compact List Entries */
+#entry {
+    margin: 2px 4px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+
+#entry:selected {
+    background-color: @bg_selection;
+    border: 1px solid @yellow;
+    outline: none;
+}
+
+#entry:selected #text {
+    color: @fg;
+    font-weight: bold;
+}
+
+#img {
+    margin-right: 10px;
+    background: transparent;
+}
+
+#text {
+    margin: 0px;
+    border: none;
+    color: @fg;
+}
