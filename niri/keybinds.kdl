@@ -2,9 +2,4 @@
 binds {
     Super+Alt+Space { spawn-sh "playerctl play-pause" ; }
     Super+Shift+S { screenshot; }
-
-    // https://github.com/ysfduzgun/selectra/
-    // https://github.com/miv403/selectra/
-    // Super+T { spawn-sh "/home/miv/repos/selectra/selectrag-wayland.py" ; }
-    Super+T { spawn-sh "/home/miv/.local/bin/selectra.py" ; }
 }

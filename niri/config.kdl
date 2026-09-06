@@ -519,15 +519,23 @@ binds {
 
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
-  
+
+    // https://github.com/ysfduzgun/selectra/
+    // https://github.com/miv403/selectra/
+    // Super+T { spawn-sh "/home/miv/repos/selectra/selectrag-wayland.py" ; }
+    Super+T { spawn-sh "/home/miv/.local/bin/selectra.py" ; }
+
     // ocr script
     Mod+Shift+T { spawn "~/.local/bin/niri-ocr"; }
-    
+
+    Mod+Ctrl+T {spawn "~/.local/bin/rofi-tdk.sh";}
+
+
     // clipboard::https://github.com/sentriz/cliphist
     // cliphist wipe
     Mod+Alt+V { spawn "sh" "-c" "cliphist list | fuzzel -d | cliphist decode | wl-copy"; }
     Mod+Alt+Ctrl+V { spawn "sh" "-c" "cliphist list | fuzzel -d | cliphist delete"; }
-    
+
     // calculator shortcut
     XF86Calculator { spawn "gnome-calculator";}
 
@@ -547,6 +555,7 @@ binds {
 
     Mod+Tab { spawn "niriseek"; } // https://github.com/mohitraghav1318/NiriSeek 
 
+    // project manager
     Mod+P { spawn "pm" "menu"; }
     Mod+Alt+P { spawn "pm" "menu" "--action" "codium"; }
     Mod+Ctrl+P { spawn "pm" "menu" "--action" "tmux"; }
@@ -554,12 +563,14 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Super+Alt+L hotkey-overlay-title="Lock Screen" { spawn "hyprlock"; }
 
     // Mod+Shift+D { spawn "nwg-drawer" "-c" "4" "-is" "36" "-term" "alacritty"; }
     // Mod+Shift+D { spawn "nwg-drawer" "-mt" "100" "-mb" "100" "-ml" "450" "-mr" "450" "-c" "4" "-is" "48" "-i"; }
     Mod+Shift+D { spawn "nwg-drawer" "-mt" "100" "-mb" "100" "-ml" "450" "-mr" "450" "-c" "4" "-is" "48" "-i" "Cawnonical-Orange"; }
+
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
@@ -569,6 +580,7 @@ binds {
     // The allow-when-locked=true property makes them work even when the session is locked.
     // Using spawn-sh allows to pass multiple arguments together with the command.
     // "-l 1.0" limits the volume to 100%.
+
     // XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
     // XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
     // XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
