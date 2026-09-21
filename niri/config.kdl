@@ -506,6 +506,34 @@ window-rule {
     default-window-height { fixed 600; }
 }
 
+
+window-rule {
+    match app-id=r#"obsidian"# 
+    opacity 0.88
+
+    background-effect {
+        blur true
+    }
+}
+
+// window-rule {
+//     match app-id=r#"chromium"# 
+//     opacity 0.75
+// 
+//     background-effect {
+//         blur true
+//     }
+// }
+
+// window-rule {
+//     match app-id=r#"firefox"# 
+//     opacity 0.75
+// 
+//     background-effect {
+//         blur true
+//     }
+// }
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
@@ -559,6 +587,9 @@ binds {
     Mod+P { spawn "pm" "menu"; }
     Mod+Alt+P { spawn "pm" "menu" "--action" "codium"; }
     Mod+Ctrl+P { spawn "pm" "menu" "--action" "tmux"; }
+
+    // Spawns wl-mirror targeted to the currently active display
+    Mod+Shift+W repeat=false { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
