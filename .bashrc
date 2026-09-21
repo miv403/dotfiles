@@ -198,6 +198,10 @@ rsync() {
   /usr/bin/env rsync -rPavh "$@"
 }
 
+nautilus() {
+  ( setsid nautilus "$@"  >/dev/null 2>&1 )
+}
+
 # ssh agent socket
 # Dynamically import SSH socket from the user systemd environment
 # if systemctl --user is-active --quiet ssh-agent; then
