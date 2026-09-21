@@ -7,9 +7,9 @@
     "spacing": 4,
     "modules-left": [
         "niri/workspaces",
+        "niri/window",
         // "cava",
-        "mpris",
-        "niri/window"
+        "mpris"
     ],
     "modules-center": [
         // "clock",
@@ -17,7 +17,7 @@
         "custom/clock"
     ],
     "modules-right": [
-        // "idle_inhibitor",
+        "idle_inhibitor",
         // "load",
         "custom/clipboard",
         "cpu",
@@ -37,57 +37,102 @@
             "active": " "
         }
     },
+
     "niri/window": {
-        "format": "{}",
-        "max-length": 30
-    },
-    "cava": {
-        "framerate": 30,
-        "autosens": 1,
-        "bars": 14,
-        "lower_cutoff_freq": 50,
-        "higher_cutoff_freq": 10000,
-        "method": "pipewire",
-        "source": "auto",
-        "stereo": true,
-        "bar_delimiter": 0,
-        "noise_reduction": 0.77,
-        "input_delay": 2,
-        "hide_on_silence": true,
-        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
-        "actions": {
-            "on-click-right": "mode"
+        "format": "{title}",
+        "max-length": 25,
+        "separate-outputs": true,
+
+        "rewrite": {
+            "^(.*) — Mozilla Firefox Private Browsing$": "󰈹  $1",
+            "^(.*) — Mozilla Firefox$": "󰈹  $1",
+
+            "^(.*) - VSCodium$": "󰨞  $1",
+            "^(.*) - Visual Studio Code$": "󰨞  $1",
+            "^(.*) - Antigravity IDE - (.*)$": "󰨞  $1 - $2",
+
+            "^(.*) - Obsidian [0-9]+\\.[0-9]+\\.[0-9]+$": "󱓧  $1",
+            "^(.*) - Zotero$": "󰈙  $1",
+
+
+            "^(.*) - mpv$": "󰕼  $1",
+
+            "^miv@mivpc$": "  $0",
+            "^Scratchpad$": "󰐃  Scratchpad",
+
+            "^Calendar$": "󰃭  Calendar",
+
+            "^Niri Settings$": "󰒓  Niri Settings",
+
+            "^Tauon$": "󰎆  Tauon",
+
+            // "^(.*)$": "󰖲  $1"
         }
     },
+    // "cava": {
+    //     "framerate": 30,
+    //     "autosens": 1,
+    //     "bars": 14,
+    //     "lower_cutoff_freq": 50,
+    //     "higher_cutoff_freq": 10000,
+    //     "method": "pipewire",
+    //     "source": "auto",
+    //     "stereo": true,
+    //     "bar_delimiter": 0,
+    //     "noise_reduction": 0.77,
+    //     "input_delay": 2,
+    //     "hide_on_silence": true,
+    //     "format-icons": [
+    //         "▁",
+    //         "▂",
+    //         "▃",
+    //         "▄",
+    //         "▅",
+    //         "▆",
+    //         "▇",
+    //         "█"
+    //     ],
+    //     "actions": {
+    //         "on-click-right": "mode"
+    //     }
+    // },
     "mpris": {
         "format": " {status_icon} {dynamic}",
+	    "format-paused": "{status_icon} <i>{dynamic}</i>",
         "interval": 1,
-        "dynamic-len": 40,
+        "dynamic-len": 30,
+	    "player-icons": {
+	        "default": "▶",
+	        "mpv": "🎵",
+            "spotifast": "󰓇"
+	    },
         "status-icons": {
             "playing": "▶ ",
             "paused": "⏸ ",
-            "stopped": ""
+            "stopped": "󰓛 "
         },
-        "dynamic-order": ["title", "artist"]
+        "dynamic-order": [
+            "title",
+            "artist"
+        ]
         // "ignored-players": ["firefox"]
     },
+
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": " ",
+            "deactivated": " "
         }
     },
     "load": {
         "format": " {}"
     },
-
     "custom/clock": {
         "exec": "~/.config/waybar/scripts/live_clock.py",
         "return-type": "json",
         "on-click": "alacritty --title 'Calendar' -e ikhal"
     },
-
     // "clock": {
     //     "interval": 1,
     //     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -107,7 +152,6 @@
     //     "format": "{temperatureC}°C {icon}",
     //     "format-icons": ["", "", ""]
     // },
-
     "custom/temperature": {
         "exec": "~/.config/waybar/scripts/temp.sh",
         "interval": 5,
@@ -115,14 +159,18 @@
         "format": "{}",
         "tooltip": true
     },
-
     "backlight": {
         "format": "%{percent} {icon}",
-        "format-icons": ["󰃞", "󰃝", "󰃟", "󰃠"]
+        "format-icons": [
+            "󰃞",
+            "󰃝",
+            "󰃟",
+            "󰃠"
+        ]
     },
     "network": {
-        "format-wifi": " ⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes} {signalStrength}% ",
-        "format-ethernet": " ⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes} {ipaddr}/{cidr} 󰈀",
+        "format-wifi": "⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes} {signalStrength}% ",
+        "format-ethernet": "⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes} 󰈀",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP) 󰈀",
         "format-disconnected": "⚠ Disconnected",
@@ -138,7 +186,13 @@
         "format-charging": "%{capacity} ",
         "format-plugged": "%{capacity} ",
         "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
     "wireplumber": {
         "scroll-step": 5,
@@ -153,7 +207,11 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": [" ", " ", " "]
+            "default": [
+                " ",
+                " ",
+                " "
+            ]
         },
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     },
@@ -173,9 +231,8 @@
         "interval": 1800, // 30 dakikada bir güncelle
         "exec": "~/.config/waybar/scripts/waybar-wttr.py",
         "return-type": "json",
-        "on-click": "flatpak run io.github.amit9838.mousam" 
+        "on-click": "flatpak run io.github.amit9838.mousam"
         // Eğer flatpak değilse direkt "mousam" yazabilirsin
         // "on-click": "alacritty --class weather-terminal -e sh -c 'curl -s wttr.in; read -n 1 -p \"Press any key to close...\"'"
     }
-
 }

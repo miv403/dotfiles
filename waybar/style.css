@@ -38,6 +38,7 @@ button {
 
 #workspaces {
     background-color: #282828;
+    border: 1px solid #504945;  /* Gruvbox bg2 outline */
 }
 
 #workspaces button {
@@ -89,6 +90,12 @@ button {
     padding: 0 10px;
     background-color: #282828;
     color: #ebdbb2;
+    border: 1px solid #504945;  /* Gruvbox bg2 outline */
+}
+
+#battery,
+#mpris {
+    border: 1px solid #504945;
 }
 
 /* Custom gruvbox colors from original config */
@@ -110,6 +117,25 @@ button {
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
+}
+
+/* Remove #window from the generic module list and declare it individually: */
+#window {
+    padding: 0 12px;
+    /* background-color: #32302f; Gruvbox bg1 for subtle elevation */
+    background-color: #282828;
+    color: #ebdbb2;
+    border: 1px solid #504945;  /* Gruvbox bg2 outline */
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+/* Hide or fade the pill when on an empty workspace */
+#window.empty,
+window#waybar.empty #window {
+    background-color: transparent;
+    border: none;
+    color: #928374; /* Gruvbox gray */
 }
 
 #custom-temperature.normal {
@@ -134,6 +160,7 @@ button {
 #battery.charging, #battery.plugged {
     background-color: #98971a;
     color: #282828;
+    border: none;
 }
 
 @keyframes blink {
@@ -152,13 +179,25 @@ button {
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
+#idle_inhibitor {
+    padding: 0 10px;
+    background-color: #282828;
+    color: #928374; /* Gruvbox muted gray when deactivated */
+}
+
+#idle_inhibitor.activated {
+    background-color: #fabd2f; /* Gruvbox yellow */
+    color: #282828;
+    font-weight: bold;
+}
+
 
 label:focus {
     background-color: #000000;
 }
 
 #wireplumber.muted {
-    background-color: #458588;
+    background-color: #484848;
 }
 
 #tray > .passive {
@@ -172,6 +211,7 @@ label:focus {
 #mpris.playing {
     background-color: #d79921;
     color: #282828;
+    border:none;
 }
 
 #tray menu {
