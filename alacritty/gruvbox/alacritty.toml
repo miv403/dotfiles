@@ -70,4 +70,4 @@ style = "Regular"
 [window]
 dynamic_title = true
 opacity = 0.95
-title = "mivpc"
+title = "Terminal"
