@@ -372,7 +372,7 @@ window-rule {
 
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
-/-window-rule {
+window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
 
@@ -502,10 +502,9 @@ window-rule {
     match app-id="^pano-scrobbler$"
     
     // Set typical compact color-picker window dimensions
-    default-column-width { fixed 800; }
+    default-column-width { fixed 900; }
     default-window-height { fixed 600; }
 }
-
 
 window-rule {
     match app-id=r#"obsidian"# 
@@ -514,6 +513,24 @@ window-rule {
     background-effect {
         blur true
     }
+}
+
+window-rule{
+    match app-id="^org\\.zotero\\.Zotero$"
+    opacity 0.88
+
+    background-effect {
+        blur true
+    }
+}
+
+window-rule{
+    match app-id="^com\\.github\\.taiko2k\\.tauonmb$"
+
+    open-floating true
+    default-column-width  { fixed 1020; }
+    default-window-height { fixed 75; }
+    default-floating-position x=0 y=690 relative-to="top"
 }
 
 // window-rule {

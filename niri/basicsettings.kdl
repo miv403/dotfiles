@@ -31,20 +31,20 @@ layout {
     focus-ring {
         off
         width 2
-        active-color "#df880b"
+        active-color "#c85502"
         inactive-color "#505050"
     }
 
     border {
         on
         width 2
-        active-color "#df880b"
+        active-color "#c85502"
         inactive-color "#505050"
     }
 
     insert-hint {
         // off
-        color "#ffc87f70"
+        color "#e38c0170"
     }
 
     tab-indicator {
