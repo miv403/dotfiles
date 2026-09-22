@@ -209,9 +209,10 @@ label:focus {
 }
 
 #mpris.playing {
-    background-color: #d79921;
+    /* background-color: #d79921; */
+    background-color: #ec842f;
     color: #282828;
-    border:none;
+    border: 1px solid #c85502;
 }
 
 #tray menu {

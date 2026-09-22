@@ -17,7 +17,7 @@
         "custom/clock"
     ],
     "modules-right": [
-        "idle_inhibitor",
+        // "idle_inhibitor",
         // "load",
         "custom/clipboard",
         "cpu",
@@ -46,6 +46,7 @@
         "rewrite": {
             "^(.*) — Mozilla Firefox Private Browsing$": "󰈹  $1",
             "^(.*) — Mozilla Firefox$": "󰈹  $1",
+            "^(.*) - Mozilla Thunderbird$": "  $1",
 
             "^(.*) - VSCodium$": "󰨞  $1",
             "^(.*) - Visual Studio Code$": "󰨞  $1",
@@ -54,10 +55,10 @@
             "^(.*) - Obsidian [0-9]+\\.[0-9]+\\.[0-9]+$": "󱓧  $1",
             "^(.*) - Zotero$": "󰈙  $1",
 
-
             "^(.*) - mpv$": "󰕼  $1",
 
             "^miv@mivpc$": "  $0",
+            "^Terminal$": "  $0",
             "^Scratchpad$": "󰐃  Scratchpad",
 
             "^Calendar$": "󰃭  Calendar",
@@ -65,6 +66,9 @@
             "^Niri Settings$": "󰒓  Niri Settings",
 
             "^Tauon$": "󰎆  Tauon",
+
+            "^(.*) – GIMP$" : "  ;$1",
+            "^(.*) - Inkscape$" : "  $1"
 
             // "^(.*)$": "󰖲  $1"
         }
@@ -97,14 +101,19 @@
     //     }
     // },
     "mpris": {
-        "format": " {status_icon} {dynamic}",
-	    "format-paused": "{status_icon} <i>{dynamic}</i>",
-        "interval": 1,
-        "dynamic-len": 30,
+      // "format": " {status_icon} {dynamic}",
+	    // "format-paused": "{status_icon} <i>{dynamic}</i>",
+      "format": " {status_icon} {artist} - {title}",
+	    "format-paused": "{status_icon} <i>{artist} - {title}</i>",
+      "interval": 1,
+      "dynamic-len": 30,
+      "max-length": 30,
 	    "player-icons": {
-	        "default": "▶",
+	        "default": "▶ ",
 	        "mpv": "🎵",
-            "spotifast": "󰓇"
+          "spotifast": "󰓇",
+          "fastpotify": "󰓇",
+          "tauon": ""
 	    },
         "status-icons": {
             "playing": "▶ ",
