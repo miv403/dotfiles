@@ -202,6 +202,38 @@ nautilus() {
   ( setsid nautilus "$@"  >/dev/null 2>&1 )
 }
 
+# monitor brightness
+#
+# you should install ddcutil
+# also load i2c-dev module
+#   `modprobe i2c-dev`
+# use `ddcutil detect` to find your monitor
+# if `ddcutil capabilities` exposes capability `10`
+#   `ddcutil getvcp 10`
+# then you can change your monitor's internal brightness
+# via these commands
+#
+# `ddcutil setvcp 10 30` # set your brightness to 30%
+
+monitor-brightness() {
+  if [[ "$1" == "up" ]]
+  then
+    ddcutil setvcp 10 + 5
+  elif [[ "$1" == "down" ]]
+  then
+    ddcutil setvcp 10 - 5
+  elif [[ "$1" =~ ^[0-9]+$ ]] && (( $1 <= 100 ))
+  then
+    ddcutil setvcp 10 "$1"
+  else
+    echo "usage: monitor-brightness (up|down)"
+    echo "       monitor-brightness <value 0-100>"
+    return 1
+  fi
+  ddcutil getvcp 10
+}
+
+
 # ssh agent socket
 # Dynamically import SSH socket from the user systemd environment
 # if systemctl --user is-active --quiet ssh-agent; then
