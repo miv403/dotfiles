@@ -528,9 +528,9 @@ window-rule{
     match app-id="^com\\.github\\.taiko2k\\.tauonmb$"
 
     open-floating true
-    default-column-width  { fixed 1020; }
-    default-window-height { fixed 75; }
-    default-floating-position x=0 y=690 relative-to="top"
+    default-column-width  { fixed 1025; }
+    default-window-height { fixed 510; }
+    default-floating-position x=0 y=390 relative-to="top"
 }
 
 // window-rule {
@@ -573,8 +573,22 @@ binds {
     // ocr script
     Mod+Shift+T { spawn "~/.local/bin/niri-ocr"; }
 
+    // rofi-tdk
     Mod+Ctrl+T {spawn "~/.local/bin/rofi-tdk.sh";}
 
+    // seeker (quick-launchers/seeker)
+    Mod+Tab { spawn "seeker"; }
+
+    // finder (quick-launchers/finder)
+    Mod+Alt+F { spawn "finder"; }
+
+    // library (quick-launchers/library)
+    Mod+Alt+Shift+L { spawn "library"; }
+
+    // project manager
+    Mod+P { spawn "pm" "menu"; }
+    Mod+Alt+P { spawn "pm" "menu" "--action" "codium"; }
+    Mod+Ctrl+P { spawn "pm" "menu" "--action" "tmux"; }
 
     // clipboard::https://github.com/sentriz/cliphist
     // cliphist wipe
@@ -598,13 +612,6 @@ binds {
 
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+Tab { spawn "niriseek"; } // https://github.com/mohitraghav1318/NiriSeek 
-
-    // project manager
-    Mod+P { spawn "pm" "menu"; }
-    Mod+Alt+P { spawn "pm" "menu" "--action" "codium"; }
-    Mod+Ctrl+P { spawn "pm" "menu" "--action" "tmux"; }
-
     // Spawns wl-mirror targeted to the currently active display
     Mod+Shift+W repeat=false { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
 
@@ -613,7 +620,7 @@ binds {
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
 
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
-    Super+Alt+L hotkey-overlay-title="Lock Screen" { spawn "hyprlock"; }
+    Mod+Alt+L hotkey-overlay-title="Lock Screen" { spawn "hyprlock"; }
 
     // Mod+Shift+D { spawn "nwg-drawer" "-c" "4" "-is" "36" "-term" "alacritty"; }
     // Mod+Shift+D { spawn "nwg-drawer" "-mt" "100" "-mb" "100" "-ml" "450" "-mr" "450" "-c" "4" "-is" "48" "-i"; }
