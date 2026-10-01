@@ -71,6 +71,7 @@ button {
 
 #idle_inhibitor,
 #cava,
+#custom-cava,
 #window,
 #clock,
 #custom-clock,
@@ -154,6 +155,9 @@ window#waybar.empty #window {
 }
 
 #cava {
+    padding: 0 5px;
+}
+#custom-cava {
     padding: 0 5px;
 }
 

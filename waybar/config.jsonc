@@ -9,7 +9,8 @@
         "niri/workspaces",
         "niri/window",
         // "cava",
-        "mpris"
+        "mpris",
+        "custom/cava"
     ],
     "modules-center": [
         // "clock",
@@ -62,6 +63,7 @@
             "^Scratchpad$": "󰐃  Scratchpad",
 
             "^Calendar$": "󰃭  Calendar",
+            "^Agenda$": "󰃰  Agenda",
 
             "^Niri Settings$": "󰒓  Niri Settings",
 
@@ -73,6 +75,11 @@
             // "^(.*)$": "󰖲  $1"
         }
     },
+  "custom/cava": {
+      "exec": "~/.local/bin/cava-waybar",
+      "format": "{}",
+      "return-type": "plain"
+  },
     // "cava": {
     //     "framerate": 30,
     //     "autosens": 1,
@@ -113,7 +120,8 @@
 	        "mpv": "🎵",
           "spotifast": "󰓇",
           "fastpotify": "󰓇",
-          "tauon": ""
+          "tauon": "",
+          "firefox": "󰈹"
 	    },
         "status-icons": {
             "playing": "▶ ",
