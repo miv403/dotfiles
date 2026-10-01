@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Açık pencereleri çek
+windows_json=$(niri msg --json windows)
+
+[ -z "$windows_json" ] || [ "$windows_json" = "[]" ] && exit 0
+
+# Fuzzel için satırları hazırla: [app_id] Başlık \t [ID]
+selected=$(echo "$windows_json" | jq -r '
+  .[] | 
+  "[\(.app_id // "pencere")] \(.title // "İsimsiz")\t[\(.id)]"
+' | fuzzel --dmenu --prompt="🪟 Pencere: " --width=70 --lines=12)
+
+[ -z "$selected" ] && exit 0
+
+# Satır sonundaki [ID] değerini ayıkla
+target_id=$(echo "$selected" | grep -o '\[[0-9]\+\]$' | tr -d '[]')
+
+if [ -n "$target_id" ]; then
+    niri msg action focus-window --id "$target_id"
+fi

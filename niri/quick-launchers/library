@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+LIBRARY_DIR="$HOME/kütüphane" # Kendi kitap/belge dizinin
+
+[ ! -d "$LIBRARY_DIR" ] && notify-send "Hata" "Kütüphane dizini bulunamadı." && exit 1
+
+# Dizin yapısını bozmadan göreceli yolları listele (alt klasörlerle birlikte arayabilmek için)
+selected_file=$(fd . "$LIBRARY_DIR" \
+    --type f \
+    --extension pdf \
+    --extension epub \
+    --extension djvu \
+    --base-directory "$LIBRARY_DIR" | \
+    fuzzel --dmenu --prompt="📚 Kitap: " --width=80 --lines=15)
+
+[ -z "$selected_file" ] && exit 0
+
+# Seçilen dosyayı Zathura ile arka planda aç
+zathura "$LIBRARY_DIR/$selected_file" >/dev/null 2>&1 &

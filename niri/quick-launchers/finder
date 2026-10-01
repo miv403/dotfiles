@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Aranacak kök dizin ve yok sayılacak kalabalık dizinler
+SEARCH_ROOT="$HOME"
+
+selected=$(fd . "$SEARCH_ROOT" \
+    --hidden \
+    --exclude ".git" \
+    --exclude "node_modules" \
+    --exclude ".cache" \
+    --exclude ".venv" \
+    --exclude "target" \
+    --base-directory "$SEARCH_ROOT" | \
+    fuzzel --dmenu --prompt="🔍 Dosya: " --width=85 --lines=15)
+
+[ -z "$selected" ] && exit 0
+
+full_path="$SEARCH_ROOT/$selected"
+
+# Dizin ise terminalde aç, dosya ise xdg-open ile varsayılana gönder
+if [ -d "$full_path" ]; then
+    alacritty --working-directory "$full_path" &
+else
+    xdg-open "$full_path" >/dev/null 2>&1 &
+fi
