@@ -12,15 +12,16 @@ selected=$(fd . "$SEARCH_ROOT" \
     --exclude ".venv" \
     --exclude "target" \
     --base-directory "$SEARCH_ROOT" | \
-    fuzzel --dmenu --prompt="🔍 Dosya: " --width=85 --lines=15)
+    fuzzel --dmenu --prompt="  Files: " --width=85 --lines=15)
 
 [ -z "$selected" ] && exit 0
 
-full_path="$SEARCH_ROOT/$selected"
+full_path="$selected"
 
 # Dizin ise terminalde aç, dosya ise xdg-open ile varsayılana gönder
 if [ -d "$full_path" ]; then
-    alacritty --working-directory "$full_path" &
+    setsid alacritty --working-directory "$full_path"
 else
-    xdg-open "$full_path" >/dev/null 2>&1 &
+    # xdg-open "$full_path" >/dev/null 2>&1 &
+    (setsid xdg-open "$full_path") >/dev/null 2>&1  &
 fi

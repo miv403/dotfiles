@@ -10,7 +10,7 @@ windows_json=$(niri msg --json windows)
 selected=$(echo "$windows_json" | jq -r '
   .[] | 
   "[\(.app_id // "pencere")] \(.title // "İsimsiz")\t[\(.id)]"
-' | fuzzel --dmenu --prompt="🪟 Pencere: " --width=70 --lines=12)
+' | fuzzel --dmenu --prompt="  Search Window: " --width=70 --lines=12)
 
 [ -z "$selected" ] && exit 0
 

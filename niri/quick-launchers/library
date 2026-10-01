@@ -12,9 +12,9 @@ selected_file=$(fd . "$LIBRARY_DIR" \
     --extension epub \
     --extension djvu \
     --base-directory "$LIBRARY_DIR" | \
-    fuzzel --dmenu --prompt="📚 Kitap: " --width=80 --lines=15)
+    fuzzel --dmenu --prompt=" Book: " --width=80 --lines=15)
 
 [ -z "$selected_file" ] && exit 0
 
 # Seçilen dosyayı Zathura ile arka planda aç
-zathura "$LIBRARY_DIR/$selected_file" >/dev/null 2>&1 &
+(setsid zathura "$selected_file") >/dev/null 2>&1 &
