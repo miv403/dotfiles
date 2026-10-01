@@ -5,23 +5,22 @@ set -euo pipefail
 SEARCH_ROOT="$HOME"
 
 selected=$(fd . "$SEARCH_ROOT" \
-    --hidden \
-    --exclude ".git" \
+    --exclude "Games" \
+    --exclude "VirtualBox VMs" \
+    --exclude "go/pkg" \
     --exclude "node_modules" \
-    --exclude ".cache" \
-    --exclude ".venv" \
     --exclude "target" \
+    --exclude "__pycache__" \
+    --exclude "venv" \
     --base-directory "$SEARCH_ROOT" | \
     fuzzel --dmenu --prompt="  Files: " --width=85 --lines=15)
 
 [ -z "$selected" ] && exit 0
 
-full_path="$selected"
-
 # Dizin ise terminalde aç, dosya ise xdg-open ile varsayılana gönder
-if [ -d "$full_path" ]; then
-    setsid alacritty --working-directory "$full_path"
+if [ -d "$selected" ]; then
+    setsid alacritty --working-directory "$selected"
 else
     # xdg-open "$full_path" >/dev/null 2>&1 &
-    (setsid xdg-open "$full_path") >/dev/null 2>&1  &
+    (setsid xdg-open "$selected") >/dev/null 2>&1  &
 fi
