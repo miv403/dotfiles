@@ -48,6 +48,9 @@
             "^(.*) — Mozilla Firefox Private Browsing$": "󰈹  $1",
             "^(.*) — Mozilla Firefox$": "󰈹  $1",
             "^(.*) - Mozilla Thunderbird$": "  $1",
+      // 
+      // Title: "2. Lexical Analysis  — Okular"
+            "^(.*) — Okular$": "  $1",
 
             "^(.*) - VSCodium$": "󰨞  $1",
             "^(.*) - Visual Studio Code$": "󰨞  $1",

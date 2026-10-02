@@ -69,5 +69,6 @@ style = "Regular"
 
 [window]
 dynamic_title = true
+decorations = "None"
 opacity = 0.95
 title = "Terminal"

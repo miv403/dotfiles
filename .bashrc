@@ -233,7 +233,6 @@ monitor-brightness() {
   ddcutil getvcp 10
 }
 
-
 # ssh agent socket
 # Dynamically import SSH socket from the user systemd environment
 # if systemctl --user is-active --quiet ssh-agent; then
