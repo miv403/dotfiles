@@ -599,16 +599,18 @@ binds {
     XF86Calculator { spawn "gnome-calculator";}
 
     // org agenda
-    Mod+A { spawn "alacritty" "--title" "Agenda" "-e" "emacsclient" "-nw" "-e" "(org-agenda nil \"a\")"; }
+    //Mod+A { spawn "alacritty" "--title" "Agenda" "-e" "emacsclient" "-nw" "-e" "(org-agenda nil \"a\")"; }
+    Mod+A {spawn "agenda";}
+
+    // open Calendar
+    // Mod+Shift+C { spawn "alacritty" "--title" "Calendar" "-e" "ikhal";  }
+    Mod+Shift+C {spawn "calendar";}
 
     // Fuzzel ile hızlıca andaç.org'a todo/not fırlatır
     Mod+Shift+A { spawn "~/.config/fuzzel/scripts/fuzzel-capture.sh"; }
 
     // terminal tmux scratchpad
     Mod+Shift+Return { spawn "~/.config/niri/scripts/niri-scratchpad.sh"; }
-  
-    // open Calendar
-    Mod+Shift+C { spawn "alacritty" "--title" "Calendar" "-e" "ikhal";  }
 
     Mod+Shift+Slash { show-hotkey-overlay; }
 
