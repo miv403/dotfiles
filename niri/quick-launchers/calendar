@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+setsid alacritty --title "Calendar" -e ikhal &

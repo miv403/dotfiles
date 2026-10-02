@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+setsid alacritty --title "Agenda" -e emacsclient -nw -e "(org-agenda nil \"a\")" &
