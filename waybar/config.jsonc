@@ -48,9 +48,8 @@
             "^(.*) — Mozilla Firefox Private Browsing$": "󰈹  $1",
             "^(.*) — Mozilla Firefox$": "󰈹  $1",
             "^(.*) - Mozilla Thunderbird$": "  $1",
-      // 
-      // Title: "2. Lexical Analysis  — Okular"
-            "^(.*) — Okular$": "  $1",
+            "^(.*) - Chromium$": "  $1",
+            "^(.*) \\| Microsoft Teams$": "󰊻  $1",
 
             "^(.*) - VSCodium$": "󰨞  $1",
             "^(.*) - Visual Studio Code$": "󰨞  $1",
@@ -58,8 +57,11 @@
 
             "^(.*) - Obsidian [0-9]+\\.[0-9]+\\.[0-9]+$": "󱓧  $1",
             "^(.*) - Zotero$": "󰈙  $1",
+            "^(.*) — Okular$": "  $1",
 
-            "^(.*) - mpv$": "󰕼  $1",
+            "^(.*) - mpv$": "  $1",
+            "^(.*) - VLC media player$": "󰕼  $1",
+            "^Tauon$": "󰎆  Tauon",
 
             "^miv@mivpc$": "  $0",
             "^Terminal$": "  $0",
@@ -69,8 +71,6 @@
             "^Agenda$": "󰃰  Agenda",
 
             "^Niri Settings$": "󰒓  Niri Settings",
-
-            "^Tauon$": "󰎆  Tauon",
 
             "^(.*) – GIMP$" : "  ;$1",
             "^(.*) - Inkscape$" : "  $1"
@@ -111,30 +111,33 @@
     //     }
     // },
     "mpris": {
-      // "format": " {status_icon} {dynamic}",
+      // "format": "{player_icon} {dynamic}",
 	    // "format-paused": "{status_icon} <i>{dynamic}</i>",
-      "format": " {status_icon} {artist} - {title}",
-	    "format-paused": "{status_icon} <i>{artist} - {title}</i>",
+      "format": "{player_icon} {title} - {artist}",
+	    "format-paused": "{status_icon} <i>{title} - {artist}</i>",
       "interval": 1,
-      "dynamic-len": 30,
       "max-length": 30,
+      //"dynamic-len": 30,
+      //"dynamic-separator": " - ",
+      //"dynamic-importance": ["title", "artist"],
+      //"dynamic-order": [
+      //    "title",
+      //    "artist"
+      //],
 	    "player-icons": {
-	        "default": "▶ ",
-	        "mpv": "🎵",
-          "spotifast": "󰓇",
-          "fastpotify": "󰓇",
-          "tauon": "",
-          "firefox": "󰈹"
+	        "default": "▶",
+	        "mpv": " ",
+          "vlc": "󰕼 ",
+          "spotifast": "󰓇 ",
+          "fastpotify": "󰓇 ",
+          "tauon": " ",
+          "firefox": "󰈹 "
 	    },
         "status-icons": {
             "playing": "▶ ",
             "paused": "⏸ ",
             "stopped": "󰓛 "
-        },
-        "dynamic-order": [
-            "title",
-            "artist"
-        ]
+        }
         // "ignored-players": ["firefox"]
     },
 
@@ -189,7 +192,7 @@
         ]
     },
     "network": {
-        "format-wifi": "⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes} {signalStrength}% ",
+        "format-wifi": "⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes} %{signalStrength} ",
         "format-ethernet": "⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes} 󰈀",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP) 󰈀",
