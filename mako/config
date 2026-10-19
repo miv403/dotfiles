@@ -4,7 +4,8 @@
 font=VictorMono NF 11
 background-color=#282828
 text-color=#ebdbb2
-border-color=#83a598
+# border-color=#83a598
+border-color=#c85502
 border-size=2
 border-radius=8
 progress-color=source #504945
@@ -22,7 +23,8 @@ border-color=#727272
 default-timeout=0
 
 [urgency=normal]
-border-color=#83a598
+# border-color=#83a598
+border-color=#c85502
 default-timeout=0
 
 [urgency=high]
