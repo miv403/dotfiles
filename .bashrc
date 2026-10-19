@@ -45,6 +45,12 @@ export PATH=${PATH}:/usr/local/cuda-13.1/bin
 # rofi-tdk database
 export DATABASE="$HOME/.local/share/rofi-tdk.tar.gz"
 
+# workspace path
+export WORKSPACE="$HOME/workspace"
+
+# library path
+export LIBRARY="$HOME/kütüphane/"
+
 # open org-agenda with neovim
 alias andaç="nvim $HOME/andaç"
 

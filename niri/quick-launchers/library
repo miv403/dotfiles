@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-LIBRARY_DIR="$HOME/kütüphane" # Kendi kitap/belge dizinin
+if [ -z $LIBRARY ]
+then
+    LIBRARY_DIR="$HOME/kütüphane" # Kendi kitap/belge dizinin
+else
+    LIBRARY_DIR="$LIBRARY" # Kendi kitap/belge dizinin
+fi
 
 [ ! -d "$LIBRARY_DIR" ] && notify-send "Hata" "Kütüphane dizini bulunamadı." && exit 1
 
