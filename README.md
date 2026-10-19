@@ -27,6 +27,12 @@ systemctl --user add-wants niri.service mako.service
 - [selectra](https://github.com/miv403/selectra): tureng dictionary lookup with notification
 - [rofi-tdk.sh](https://github.com/metwse/rofi-tdk.sh): tdk sözlük for rofi
 - [project manager](https://github.com/miv403/project-manager): project switcher/manager with fuzzel.
+- quick launchers
+  - agenda: launches org-mode agenda view
+  - calendar: launches `ikhal`
+  - finder: search `$HOME` with fd, uses fuzzel to enumerate results
+  - library: *finder* but looks in `$LIBRARY_DIR`
+  - seeker: enumerates opened niri windows via fuzzel and seeks to selected one.
 
 ### terminal
 
