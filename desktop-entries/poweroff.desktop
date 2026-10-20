@@ -1,0 +1,15 @@
+# ~/.local/share/applications/poweroff.desktop
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=Power Off
+GenericName=Shut Down System
+Comment=Power off the machine via systemd
+# Exec=systemctl poweroff
+Exec=poweroff-fuzzel.sh
+# Optional safe version with inline Fuzzel confirmation:
+# Exec=sh -c 'printf "Cancel\nPower Off\n" | fuzzel --dmenu --prompt="Confirm Power Off? " --lines=2 | grep -qx "Power Off" && systemctl poweroff'
+Icon=/home/miv/.local/share/icons/Cawnonical-Orange/misc/glyphs/power-settings-circle.svg
+Terminal=false
+Categories=System;
+Keywords=shutdown;poweroff;halt;turn off;

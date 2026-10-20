@@ -1,0 +1,15 @@
+# ~/.local/share/applications/reboot.desktop
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=Reboot
+GenericName=Restart System
+Comment=Reboot the machine via systemd
+# Exec=systemctl reboot
+Exec=reboot-fuzzel.sh
+# Optional safe version with inline Fuzzel confirmation:
+# Exec=sh -c 'printf "Cancel\nReboot\n" | fuzzel --dmenu --prompt="Confirm Reboot? " --lines=2 | grep -qx "Reboot" && systemctl reboot'
+Icon=/home/miv/.local/share/icons/Cawnonical-Orange/actions/glyphs/system-reboot.svg
+Terminal=false
+Categories=System;
+Keywords=restart;reboot;reset;

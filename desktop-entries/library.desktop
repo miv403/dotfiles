@@ -1,0 +1,12 @@
+# ~/.local/share/applications/library.desktop
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=Library
+GenericName=Document & Paper Library
+Comment=Open custom Fuzzel library script
+Exec=library
+Icon=/home/miv/.local/share/icons/Cawnonical-Orange/misc/glyphs/book-symbolic.svg
+Terminal=false
+Categories=Utility;Office;
+Keywords=books;pdfs;papers;docs;zotero;read;

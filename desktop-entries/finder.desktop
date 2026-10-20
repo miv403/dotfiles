@@ -1,0 +1,12 @@
+# ~/.local/share/applications/finder.desktop
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=Finder
+GenericName=File Search
+Comment=Launch custom Fuzzel file finder script
+Exec=finder
+Icon=/home/miv/.local/share/icons/Cawnonical-Orange/places/icons/folder-finds.svg
+Terminal=false
+Categories=Utility;
+Keywords=find;search;files;locate;
