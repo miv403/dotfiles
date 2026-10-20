@@ -1,0 +1,15 @@
+# ~/.local/share/applications/poweroff.desktop
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=Logout
+GenericName=Logout Session
+Comment=Logout from current niri session
+# Exec=systemctl poweroff
+Exec=logout-fuzzel.sh
+# Optional safe version with inline Fuzzel confirmation:
+# Exec=sh -c 'printf "Cancel\nPower Off\n" | fuzzel --dmenu --prompt="Confirm Power Off? " --lines=2 | grep -qx "Power Off" && systemctl poweroff'
+Icon=/home/miv/.local/share/icons/Cawnonical-Orange/misc/glyphs/logout.svg
+Terminal=false
+Categories=System;
+Keywords=logout;
