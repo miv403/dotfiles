@@ -1,0 +1,13 @@
+# ~/.local/share/applications/poweroff.desktop
+# Mod+Shift+W repeat=false { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=Mirror Screen
+GenericName=Mirror Current Screen
+Comment=Mirror current screen with wl-mirror
+Exec=mirror-screen.sh
+Icon=/home/miv/.local/share/icons/Cawnonical-Orange/misc/glyphs/dual-screen.svg
+Terminal=false
+Categories=System;
+Keywords=screen;mirror;wayland;
